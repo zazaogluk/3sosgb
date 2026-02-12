@@ -129,8 +129,6 @@ section{
 max-width:1100px;
 margin:auto;
 padding:100px 20px;
-opacity:1;   /* görünmeme sorunu fix */
-transform:none;
 }
 
 h2{
@@ -190,6 +188,8 @@ height:450px;
 border-radius:18px;
 overflow:hidden;
 border:3px solid #002850;
+box-shadow:0 12px 25px rgba(0,0,0,0.15);
+margin-top:40px;
 }
 
 .map-container iframe{
@@ -230,9 +230,7 @@ opacity:0.9;
 
 @media(max-width:768px){
 
-.navbar{
-padding:15px 20px;
-}
+.navbar{padding:15px 20px;}
 
 .nav-links{
 display:none;
@@ -273,7 +271,7 @@ text-align:center;
 <body>
 
 <div class="navbar" id="navbar">
-<img class="small-logo" src="https://raw.githubusercontent.com/zazaogluk/3sosgb/main/Logo.png?v=5">
+<img class="small-logo" src="https://raw.githubusercontent.com/zazaogluk/3sosgb/main/Logo.png?v=6">
 <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 <div class="nav-links" id="navLinks">
 <a href="#hakkimizda">Hakkımızda</a>
@@ -285,7 +283,7 @@ text-align:center;
 <header>
 <div class="hero-content">
 <div class="hero-logo">
-<img src="https://raw.githubusercontent.com/zazaogluk/3sosgb/main/Logo.png?v=5" alt="3S OSGB Logo">
+<img src="https://raw.githubusercontent.com/zazaogluk/3sosgb/main/Logo.png?v=6" alt="3S OSGB Logo">
 </div>
 <div class="tagline">Sağlık, Sorumluluk, Süreklilik...</div>
 <a href="#iletisim" class="hero-btn">Bize Ulaşın</a>
@@ -336,7 +334,11 @@ Merkez Mahallesi, Şehit Erdem Caddesi No:12 Daire:5<br>
 </div>
 
 <div class="map-container">
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d554.0021136746327!2d29.172782882309903!3d41.03135160889322!2m3!1f0!2f0!3f0!3m2!1i1024!2f13.1!3m3!1m2!1s0x14cacf0063717e83%3A0xeb35ddaf45914813!2s3S%20OSGB!5e0!3m2!1str!2str"></iframe>
+<iframe 
+src="https://www.google.com/maps?q=3S+OSGB+Çekmeköy+İstanbul&output=embed"
+allowfullscreen=""
+loading="lazy">
+</iframe>
 </div>
 
 </section>
@@ -351,7 +353,7 @@ Merkez Mahallesi, Şehit Erdem Caddesi No:12 Daire:5<br>
 <h4>İletişim</h4>
 <p>
 <a href="tel:02166426331">0216 642 6331</a><br>
-Merkez Mah. Şehit Erdem Cad. No:12 D:5<br>
+Mimar Sinan Mah. Çavuşbaşı Cad. Özge Sok. Zin D İş Merkezi No:1 K:3 D:13<br>
 Çekmeköy / İstanbul
 </p>
 </div>
@@ -362,7 +364,6 @@ Merkez Mah. Şehit Erdem Cad. No:12 D:5<br>
 </footer>
 
 <script>
-
 function toggleMenu(){
 document.getElementById("navLinks").classList.toggle("active");
 }
@@ -372,7 +373,6 @@ const navbar=document.getElementById("navbar");
 if(window.scrollY>50){navbar.classList.add("scrolled");}
 else{navbar.classList.remove("scrolled");}
 });
-
 </script>
 
 </body>
