@@ -1,146 +1,216 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <title>3S OSGB | İş Sağlığı ve Güvenliği</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3S OSGB | İş Sağlığı ve Güvenliği</title>
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f4f6f8;
-            color: #333;
-        }
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 
-        /* HERO ALANI */
-        header {
-            background: #002850;
-            color: white;
-            height: 90vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 0 20px;
-        }
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;600;700&display=swap" rel="stylesheet">
 
-        @media (min-width: 992px) {
-            header {
-                height: 55vh;
-                padding-top: 60px;
-                padding-bottom: 60px;
-            }
+<style>
 
-            header h1 {
-                font-size: 2.5em;
-            }
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: #f4f6f8;
+    color: #333;
+    scroll-behavior: smooth;
+}
 
-            header p {
-                font-size: 1.2em;
-            }
-        }
+/* ===================== */
+/* NAVBAR */
+/* ===================== */
 
-        header h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
-        }
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 18px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.4s ease;
+    z-index: 1000;
+}
 
-        header p {
-            font-size: 1.5em;
-            margin-bottom: 30px;
-        }
+.navbar.scrolled {
+    background: #002850;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
 
-        header .btn {
-            background: #fff;
-            color: #002850;
-            padding: 12px 25px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-        }
+.logo-area {
+    width: 150px; /* Logo için boş alan */
+    height: 40px;
+}
 
-        header .btn:hover {
-            background: #002850;
-            color: #fff;
-            border: 2px solid #fff;
-        }
+.nav-links a {
+    text-decoration: none;
+    margin-left: 30px;
+    color: white;
+    font-weight: 500;
+    transition: 0.3s;
+}
 
-        section {
-            max-width: 1000px;
-            margin: auto;
-            padding: 40px 20px;
-        }
+.nav-links a:hover {
+    opacity: 0.7;
+}
 
-        h2 {
-            color: #002850;
-        }
+/* ===================== */
+/* HERO SECTION */
+/* ===================== */
 
-        .services {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
+header {
+    height: 100vh;
+    background: linear-gradient(135deg, #002850, #003f7d);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+}
 
-        .box {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            transition: 0.3s;
-        }
+.hero-content {
+    animation: fadeIn 1.5s ease forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
 
-        .box:hover {
-            transform: translateY(-5px);
-        }
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
-        /* HARİTA */
-        .map-container {
-            max-width: 100%;
-            height: 450px;
-            margin-top: 20px;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-            border: 3px solid #002850;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+header h1 {
+    font-size: 3.5em;
+    margin-bottom: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
 
-        .map-container:hover {
-            transform: scale(1.02);
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
-        }
+.tagline {
+    font-weight: 100;
+    font-style: italic;
+    font-size: 1.5em;
+    margin-bottom: 40px;
+    opacity: 0.85;
+}
 
-        .map-container iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
+.hero-btn {
+    padding: 14px 35px;
+    border-radius: 30px;
+    text-decoration: none;
+    background: white;
+    color: #002850;
+    font-weight: 600;
+    transition: 0.3s;
+}
 
-        footer {
-            background: #002850;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-    </style>
+.hero-btn:hover {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+/* ===================== */
+/* SECTIONS */
+/* ===================== */
+
+section {
+    max-width: 1100px;
+    margin: auto;
+    padding: 100px 20px;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 0.8s ease;
+}
+
+section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+h2 {
+    color: #002850;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+.services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+}
+
+.box {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+    transition: 0.3s;
+}
+
+.box:hover {
+    transform: translateY(-8px);
+}
+
+.box h3 {
+    color: #002850;
+}
+
+.map-container {
+    height: 450px;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 3px solid #002850;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+footer {
+    background: #002850;
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+</style>
 </head>
 
 <body>
 
+<!-- NAVBAR -->
+<div class="navbar" id="navbar">
+    <div class="logo-area"></div>
+    <div class="nav-links">
+        <a href="#hakkimizda">Hakkımızda</a>
+        <a href="#hizmetler">Hizmetler</a>
+        <a href="#iletisim">İletişim</a>
+    </div>
+</div>
+
+<!-- HERO -->
 <header>
-    <div class="hero">
-        <h1>3S Ortak Sağlık Güvenlik Birimi</h1>
-        <p>İş Sağlığı ve Güvenliği Hizmetlerinde Güvenilir Çözüm</p>
-        <a href="tel:+902166426331" class="btn">Bize Ulaşın</a>
+    <div class="hero-content">
+        <h1>3S OSGB</h1>
+        <div class="tagline">Sağlık, Sorumluluk, Süreklilik...</div>
+        <a href="#iletisim" class="hero-btn">Bize Ulaşın</a>
     </div>
 </header>
 
-<section>
+<section id="hakkimizda">
     <h2>Hakkımızda</h2>
     <p>
         3S OSGB, iş sağlığı ve güvenliği alanında uzman kadrosu ile
@@ -148,7 +218,7 @@
     </p>
 </section>
 
-<section>
+<section id="hizmetler">
     <h2>Hizmetlerimiz</h2>
     <div class="services">
         <div class="box">
@@ -170,11 +240,11 @@
     </div>
 </section>
 
-<section>
+<section id="iletisim">
     <h2>İletişim</h2>
     <p>
-        📞 Telefon: 0216 642 6331<br><br>
-        📍 Adres: Mimar Sinan Mh. Özge Sk. No:1 <br>
+        📞 0216 642 6331 <br><br>
+        📍 Mimar Sinan Mh. Özge Sk. No:1 <br>
         Zin D İş Merkezi K:3 D:13 <br>
         Çekmeköy / İstanbul
     </p>
@@ -182,7 +252,6 @@
     <div class="map-container">
         <iframe 
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d554.0021136746327!2d29.172782882309903!3d41.03135160889322!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cacf0063717e83%3A0xeb35ddaf45914813!2s3S%20OSGB!5e0!3m2!1str!2str!4v1769013553290!5m2!1str!2str"
-            allowfullscreen=""
             loading="lazy">
         </iframe>
     </div>
@@ -191,6 +260,34 @@
 <footer>
     © 2026 3S OSGB | Tüm Hakları Saklıdır
 </footer>
+
+<script>
+
+/* Navbar scroll efekti */
+window.addEventListener("scroll", function() {
+    const navbar = document.getElementById("navbar");
+    if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+    } else {
+        navbar.classList.remove("scrolled");
+    }
+});
+
+/* Scroll reveal animasyonu */
+const sections = document.querySelectorAll("section");
+
+window.addEventListener("scroll", () => {
+    const trigger = window.innerHeight * 0.85;
+
+    sections.forEach(section => {
+        const top = section.getBoundingClientRect().top;
+        if (top < trigger) {
+            section.classList.add("show");
+        }
+    });
+});
+
+</script>
 
 </body>
 </html>
