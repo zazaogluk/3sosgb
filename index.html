@@ -11,7 +11,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-
 body{
 margin:0;
 font-family:'Inter',sans-serif;
@@ -21,7 +20,6 @@ scroll-behavior:smooth;
 }
 
 /* NAVBAR */
-
 .navbar{
 position:fixed;
 top:0;
@@ -33,34 +31,28 @@ align-items:center;
 transition:0.4s ease;
 z-index:1000;
 }
-
 .navbar.scrolled{
 background:rgba(0,40,80,0.95);
 backdrop-filter:blur(10px);
 }
-
 .small-logo{
 height:40px;
 opacity:0;
 transition:0.4s ease;
 }
-
 .navbar.scrolled .small-logo{
 opacity:1;
 }
-
 .nav-links{
 display:flex;
 align-items:center;
 }
-
 .nav-links a{
 text-decoration:none;
 margin-left:30px;
 color:white;
 font-weight:500;
 }
-
 .menu-toggle{
 display:none;
 font-size:28px;
@@ -69,7 +61,6 @@ cursor:pointer;
 }
 
 /* HERO */
-
 header{
 height:100vh;
 background:linear-gradient(135deg,#002850,#003f7d);
@@ -79,21 +70,18 @@ align-items:center;
 text-align:center;
 padding:0 20px;
 }
-
 .hero-content{
 background:rgba(255,255,255,0.08);
 padding:60px;
 border-radius:25px;
 backdrop-filter:blur(12px);
 }
-
 .hero-logo img{
 width:260px;
 max-width:85%;
 margin-bottom:25px;
 filter:drop-shadow(0 0 20px rgba(255,255,255,0.25));
 }
-
 .tagline{
 font-weight:100;
 font-style:italic;
@@ -103,24 +91,20 @@ color:white;
 }
 
 /* SECTIONS */
-
 section{
 max-width:1100px;
 margin:auto;
 padding:100px 20px;
 }
-
 h2{
 color:#002850;
 margin-bottom:25px;
 }
-
 .services{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:30px;
 }
-
 .box{
 background:white;
 padding:30px;
@@ -129,20 +113,17 @@ box-shadow:0 10px 25px rgba(0,0,0,0.06);
 }
 
 /* CONTACT */
-
 .contact-wrapper{
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:40px;
 margin-bottom:50px;
 }
-
 .contact-form{
 display:flex;
 flex-direction:column;
 gap:15px;
 }
-
 .contact-form input,
 .contact-form textarea{
 padding:14px;
@@ -150,7 +131,6 @@ border-radius:10px;
 border:1px solid #ddd;
 font-family:inherit;
 }
-
 .contact-form button{
 background:#002850;
 color:white;
@@ -162,7 +142,6 @@ cursor:pointer;
 }
 
 /* SUCCESS POPUP */
-
 .success-message{
 position:fixed;
 top:50%;
@@ -179,7 +158,6 @@ font-weight:500;
 }
 
 /* MAP */
-
 .map-container{
 height:450px;
 border-radius:18px;
@@ -187,7 +165,6 @@ overflow:hidden;
 border:3px solid #002850;
 margin-top:40px;
 }
-
 .map-container iframe{
 width:100%;
 height:100%;
@@ -195,24 +172,19 @@ border:0;
 }
 
 /* FOOTER */
-
 footer{
 background:#002850;
 color:white;
 padding:50px 20px;
 }
-
 footer a{
 color:white;
 text-decoration:none;
 }
 
 /* MOBILE */
-
 @media(max-width:768px){
-
 .navbar{padding:15px 20px;}
-
 .nav-links{
 display:none;
 flex-direction:column;
@@ -223,21 +195,16 @@ background:#002850;
 padding:20px;
 border-radius:10px;
 }
-
 .nav-links.active{
 display:flex;
 }
-
 .menu-toggle{
 display:block;
 }
-
 .contact-wrapper{
 grid-template-columns:1fr;
 }
-
 }
-
 </style>
 </head>
 
@@ -271,7 +238,8 @@ grid-template-columns:1fr;
 <p><strong>Telefon:</strong> 0216 642 6331</p>
 <p><strong>E-posta:</strong> info@3sosgb.com</p>
 <p><strong>Adres:</strong><br>
-Merkez Mah. Şehit Erdem Cad. No:12 D:5<br>
+Mimar Sinan Mah. Çavuşbaşı Cad. Özge Sok.<br>
+Zin D İş Merkezi No:1 K:3 D:13<br>
 Çekmeköy / İstanbul
 </p>
 </div>
@@ -290,7 +258,7 @@ Merkez Mah. Şehit Erdem Cad. No:12 D:5<br>
 </div>
 
 <div class="map-container">
-<iframe src="https://www.google.com/maps?q=3S+OSGB+Çekmeköy+İstanbul&output=embed" loading="lazy"></iframe>
+<iframe src="https://www.google.com/maps?q=Mimar+Sinan+Mahallesi+Çavuşbaşı+Cad+Özge+Sokak+Zin+D+İş+Merkezi+Çekmeköy&output=embed" loading="lazy"></iframe>
 </div>
 
 </section>
@@ -302,12 +270,13 @@ Mesajınız başarıyla iletilmiştir.
 <footer>
 <p style="text-align:center;">
 <a href="tel:02166426331">0216 642 6331</a><br>
+Mimar Sinan Mah. Çavuşbaşı Cad. Özge Sok.<br>
+Zin D İş Merkezi No:1 K:3 D:13<br>
 Çekmeköy / İstanbul
 </p>
 </footer>
 
 <script>
-
 function toggleMenu(){
 document.getElementById("navLinks").classList.toggle("active");
 }
@@ -318,11 +287,8 @@ if(window.scrollY>50){navbar.classList.add("scrolled");}
 else{navbar.classList.remove("scrolled");}
 });
 
-/* AJAX FORM */
-
 document.getElementById("contactForm").addEventListener("submit", function(e){
 e.preventDefault();
-
 let formData = new FormData(this);
 
 fetch("https://formsubmit.co/ajax/info@3sosgb.com", {
@@ -333,14 +299,12 @@ body: formData
 .then(data => {
 document.getElementById("successMessage").style.display = "block";
 document.getElementById("contactForm").reset();
-
 setTimeout(() => {
 document.getElementById("successMessage").style.display = "none";
 }, 3000);
 })
 .catch(error => alert("Bir hata oluştu. Lütfen tekrar deneyin."));
 });
-
 </script>
 
 </body>
