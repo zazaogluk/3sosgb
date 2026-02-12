@@ -5,8 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>3S OSGB | İş Sağlığı ve Güvenliği</title>
 
+<meta name="description" content="3S OSGB - İş Sağlığı ve Güvenliği hizmetleri. Risk analizi, işyeri hekimliği, iş güvenliği uzmanlığı ve acil durum planları.">
+<meta property="og:title" content="3S OSGB">
+<meta property="og:description" content="Sağlık, Sorumluluk, Süreklilik...">
+<meta property="og:type" content="website">
+
 <link rel="icon" href="favicon.ico" type="image/x-icon">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;600;700&display=swap" rel="stylesheet">
@@ -21,9 +25,7 @@ body {
     scroll-behavior: smooth;
 }
 
-/* ===================== */
-/* NAVBAR */
-/* ===================== */
+/* ================= NAVBAR ================= */
 
 .navbar {
     position: fixed;
@@ -38,8 +40,19 @@ body {
 }
 
 .navbar.scrolled {
-    background: #002850;
+    background: rgba(0,40,80,0.95);
+    backdrop-filter: blur(10px);
     box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.navbar .small-logo {
+    height: 35px;
+    opacity: 0;
+    transition: 0.4s ease;
+}
+
+.navbar.scrolled .small-logo {
+    opacity: 1;
 }
 
 .nav-links a {
@@ -54,50 +67,58 @@ body {
     opacity: 0.7;
 }
 
-/* ===================== */
-/* HERO */
-/* ===================== */
+/* ================= HERO ================= */
 
 header {
     height: 100vh;
     background: linear-gradient(135deg, #002850, #003f7d);
-    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     padding: 0 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 50%;
+    top: -150px;
+    right: -150px;
 }
 
 .hero-content {
+    background: rgba(255,255,255,0.08);
+    padding: 60px;
+    border-radius: 25px;
+    backdrop-filter: blur(12px);
     animation: fadeIn 1.5s ease forwards;
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
 }
 
 @keyframes fadeIn {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    to { opacity:1; transform: translateY(0); }
 }
-
-/* ORTADAKİ LOGO */
 
 .hero-logo img {
     width: 260px;
     max-width: 85%;
     margin-bottom: 25px;
+    filter: drop-shadow(0 0 20px rgba(255,255,255,0.25));
 }
-
-/* TAGLINE */
 
 .tagline {
     font-weight: 100;
     font-style: italic;
     font-size: 1.5em;
     margin-bottom: 40px;
-    opacity: 0.9;
+    color: white;
 }
 
 .hero-btn {
@@ -116,9 +137,7 @@ header {
     border: 2px solid white;
 }
 
-/* ===================== */
-/* SECTIONS */
-/* ===================== */
+/* ================= SECTIONS ================= */
 
 section {
     max-width: 1100px;
@@ -158,10 +177,6 @@ h2 {
     transform: translateY(-8px);
 }
 
-.box h3 {
-    color: #002850;
-}
-
 .map-container {
     height: 450px;
     border-radius: 18px;
@@ -176,11 +191,44 @@ h2 {
     border: 0;
 }
 
+/* ================= FOOTER ================= */
+
 footer {
     background: #002850;
     color: white;
+    padding: 50px 20px;
+}
+
+.footer-container {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+}
+
+.footer-container h4 {
+    margin-bottom: 15px;
+}
+
+.footer-bottom {
     text-align: center;
-    padding: 30px;
+    margin-top: 40px;
+    font-size: 0.9em;
+    opacity: 0.8;
+}
+
+@media(max-width:768px){
+    .navbar {
+        padding: 15px 20px;
+    }
+    .nav-links a {
+        margin-left: 15px;
+        font-size: 14px;
+    }
+    .hero-content {
+        padding: 40px 25px;
+    }
 }
 
 </style>
@@ -188,9 +236,8 @@ footer {
 
 <body>
 
-<!-- NAVBAR -->
 <div class="navbar" id="navbar">
-    <div></div>
+    <img class="small-logo" src="https://raw.githubusercontent.com/zazaogluk/3sosgb/main/Logo.png?v=3">
     <div class="nav-links">
         <a href="#hakkimizda">Hakkımızda</a>
         <a href="#hizmetler">Hizmetler</a>
@@ -198,70 +245,57 @@ footer {
     </div>
 </div>
 
-<!-- HERO -->
 <header>
     <div class="hero-content">
         <div class="hero-logo">
-            <img src="https://raw.githubusercontent.com/zazaogluk/3sosgb/main/Logo.png?v=2" alt="3S OSGB Logo">
+            <img src="https://raw.githubusercontent.com/zazaogluk/3sosgb/main/Logo.png?v=3" alt="3S OSGB Logo">
         </div>
-
         <div class="tagline">
             Sağlık, Sorumluluk, Süreklilik...
         </div>
-
         <a href="#iletisim" class="hero-btn">Bize Ulaşın</a>
     </div>
 </header>
 
 <section id="hakkimizda">
     <h2>Hakkımızda</h2>
-    <p>
-        3S OSGB, iş sağlığı ve güvenliği alanında uzman kadrosu ile
-        işletmelere mevzuata uygun, sürdürülebilir ve güvenilir çözümler sunar.
-    </p>
+    <p>3S OSGB, iş sağlığı ve güvenliği alanında uzman kadrosu ile işletmelere sürdürülebilir ve güvenilir çözümler sunar.</p>
 </section>
 
 <section id="hizmetler">
     <h2>Hizmetlerimiz</h2>
     <div class="services">
-        <div class="box">
-            <h3>İş Güvenliği Uzmanlığı</h3>
-            <p>Az tehlikeli, tehlikeli ve çok tehlikeli sınıflar.</p>
-        </div>
-        <div class="box">
-            <h3>İşyeri Hekimliği</h3>
-            <p>Periyodik muayene ve sağlık gözetimi.</p>
-        </div>
-        <div class="box">
-            <h3>Risk Analizi</h3>
-            <p>İş yerinize özel risk değerlendirmesi.</p>
-        </div>
-        <div class="box">
-            <h3>Acil Durum Planları</h3>
-            <p>Yangın, tahliye ve ilk yardım planları.</p>
-        </div>
+        <div class="box"><h3>İş Güvenliği</h3><p>Uzman desteği.</p></div>
+        <div class="box"><h3>İşyeri Hekimliği</h3><p>Sağlık gözetimi.</p></div>
+        <div class="box"><h3>Risk Analizi</h3><p>Profesyonel değerlendirme.</p></div>
+        <div class="box"><h3>Acil Durum Planları</h3><p>Güvenli planlama.</p></div>
     </div>
 </section>
 
 <section id="iletisim">
     <h2>İletişim</h2>
-    <p>
-        📞 0216 642 6331 <br><br>
-        📍 Mimar Sinan Mh. Özge Sk. No:1 <br>
-        Zin D İş Merkezi K:3 D:13 <br>
-        Çekmeköy / İstanbul
-    </p>
+    <p>📞 0216 642 6331<br><br>
+    📍 Çekmeköy / İstanbul</p>
 
     <div class="map-container">
-        <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d554.0021136746327!2d29.172782882309903!3d41.03135160889322!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cacf0063717e83%3A0xeb35ddaf45914813!2s3S%20OSGB!5e0!3m2!1str!2str!4v1769013553290!5m2!1str!2str"
-            loading="lazy">
-        </iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d554.0021136746327!2d29.172782882309903!3d41.03135160889322!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cacf0063717e83%3A0xeb35ddaf45914813!2s3S%20OSGB!5e0!3m2!1str!2str!4v1769013553290!5m2!1str!2str"></iframe>
     </div>
 </section>
 
 <footer>
-    © 2026 3S OSGB | Tüm Hakları Saklıdır
+    <div class="footer-container">
+        <div>
+            <h4>3S OSGB</h4>
+            <p>Sağlık, Sorumluluk, Süreklilik...</p>
+        </div>
+        <div>
+            <h4>İletişim</h4>
+            <p>0216 642 6331<br>Çekmeköy / İstanbul</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        © 2026 3S OSGB | Tüm Hakları Saklıdır
+    </div>
 </footer>
 
 <script>
@@ -279,10 +313,8 @@ const sections = document.querySelectorAll("section");
 
 window.addEventListener("scroll", () => {
     const trigger = window.innerHeight * 0.85;
-
     sections.forEach(section => {
-        const top = section.getBoundingClientRect().top;
-        if (top < trigger) {
+        if (section.getBoundingClientRect().top < trigger) {
             section.classList.add("show");
         }
     });
