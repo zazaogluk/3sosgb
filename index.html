@@ -7,136 +7,129 @@
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <title>3S OSGB | İş Sağlığı ve Güvenliği</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <style>
-        header {
-    background: #002850;
-    color: white;
-    height: 90vh; /* Yüksek hero alanı */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 0 20px;
-}
-/* Bilgisayar ve büyük ekranlar */
-@media (min-width: 992px) {
-    header {
-        height: 55vh;   /* İstersen 50vh, 60vh yapabilirsin */
-        padding-top: 60px;
-        padding-bottom: 60px;
-    }
-
-    header h1 {
-        font-size: 2.5em;
-    }
-
-    header p {
-        font-size: 1.2em;
-    }
-}
-
-header h1 {
-    font-size: 3em;
-    margin-bottom: 20px;
-}
-
-header p {
-    font-size: 1.5em;
-    margin-bottom: 30px;
-}
-
-header .btn {
-    background: #fff;
-    color: #002850;
-    padding: 12px 25px;
-    border-radius: 25px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background 0.3s, color 0.3s;
-}
-
-header .btn:hover {
-    background: #002850;
-    color: #fff;
-}
-
-        .map-container {
-    max-width: 100%;
-    height: 450px;
-    margin-top: 20px;
-    border-radius: 12px;          /* Köşeleri daha yuvarlak */
-    overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);  /* Hafif gölge */
-    border: 2px solid #0b5ed7;    /* İnce mavi çerçeve */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hover efekti için */
-}
-
-.map-container iframe {
-    width: 100%;
-    height: 100%;
-    border: 0;
-}
-
-/* Hover efekti: üzerine gelince hafif büyüsün ve gölge artsın */
-.map-container:hover {
-    transform: scale(1.02);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
-}
-
-        /* Harita responsive ve göze hoş görünmesi */
-.map-container {
-    max-width: 100%;
-    height: 450px;
-    margin-top: 20px;
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-.map-container iframe {
-    width: 100%;
-    height: 100%;
-    border: 0;
-}
-
         body {
             margin: 0;
             font-family: Arial, sans-serif;
             background: #f4f6f8;
             color: #333;
         }
+
+        /* HERO ALANI */
         header {
-            background: #002850 !important;
+            background: #002850;
             color: white;
-            padding: 30px 20px;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
+            padding: 0 20px;
         }
+
+        @media (min-width: 992px) {
+            header {
+                height: 55vh;
+                padding-top: 60px;
+                padding-bottom: 60px;
+            }
+
+            header h1 {
+                font-size: 2.5em;
+            }
+
+            header p {
+                font-size: 1.2em;
+            }
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        header p {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+        }
+
+        header .btn {
+            background: #fff;
+            color: #002850;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        header .btn:hover {
+            background: #002850;
+            color: #fff;
+            border: 2px solid #fff;
+        }
+
         section {
             max-width: 1000px;
             margin: auto;
             padding: 40px 20px;
         }
+
         h2 {
-            color: #0b5ed7;
+            color: #002850;
         }
+
         .services {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
         }
+
         .box {
             background: white;
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: 0.3s;
         }
+
+        .box:hover {
+            transform: translateY(-5px);
+        }
+
+        /* HARİTA */
+        .map-container {
+            max-width: 100%;
+            height: 450px;
+            margin-top: 20px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            border: 3px solid #002850;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .map-container:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
         footer {
-            background: #222;
+            background: #002850;
             color: white;
             text-align: center;
             padding: 20px;
         }
     </style>
 </head>
+
 <body>
 
 <header>
@@ -146,7 +139,6 @@ header .btn:hover {
         <a href="tel:+902166426331" class="btn">Bize Ulaşın</a>
     </div>
 </header>
-
 
 <section>
     <h2>Hakkımızda</h2>
@@ -185,23 +177,16 @@ header .btn:hover {
         📍 Adres: Mimar Sinan Mh. Özge Sk. No:1 <br>
         Zin D İş Merkezi K:3 D:13 <br>
         Çekmeköy / İstanbul
-        <!-- Google Maps Başlangıç -->
-<div class="map-container">
-    <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d554.0021136746327!2d29.172782882309903!3d41.03135160889322!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cacf0063717e83%3A0xeb35ddaf45914813!2s3S%20OSGB!5e0!3m2!1str!2str!4v1769013553290!5m2!1str!2str" 
-        width="100%" 
-        height="450" 
-        style="border:0;" 
-        allowfullscreen="" 
-        loading="lazy" 
-        referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
-</div>
-<!-- Google Maps Bitiş -->
-
     </p>
-</section>
 
+    <div class="map-container">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d554.0021136746327!2d29.172782882309903!3d41.03135160889322!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cacf0063717e83%3A0xeb35ddaf45914813!2s3S%20OSGB!5e0!3m2!1str!2str!4v1769013553290!5m2!1str!2str"
+            allowfullscreen=""
+            loading="lazy">
+        </iframe>
+    </div>
+</section>
 
 <footer>
     © 2026 3S OSGB | Tüm Hakları Saklıdır
