@@ -358,6 +358,22 @@ width:6px;
 background:#002850;
 border-radius:10px;
 }
+/* CARD HEADER STRIP */
+.card-header{
+background:#002850;
+color:white;
+padding:15px 20px;
+margin:-30px -30px 20px -30px; /* Kart paddingini sıfırlayıp tam genişlik yapar */
+border-radius:18px 18px 0 0;
+font-weight:600;
+font-size:16px;
+letter-spacing:0.5px;
+}
+
+/* Kart iç padding ayarı */
+.service-card{
+padding-top:0; /* Üst paddingi kaldırıyoruz çünkü header var */
+}
 
 </style>
 </head>
@@ -418,7 +434,8 @@ border-radius:10px;
 
   <!-- MOBİL SAĞLIK -->
   <div class="service-card">
-    <h3>Mobil Sağlık</h3>
+   <div class="card-header">Mobil Sağlık</div>
+
 
     <p>
     Mobil Sağlık Hizmetleri, Meslek Hastalıklarının önlenmesi ve tespitinin yapılması amacıyla,
@@ -453,7 +470,8 @@ border-radius:10px;
 
   <!-- OSGB HİZMETLERİ -->
   <div class="service-card">
-    <h3>OSGB Hizmetleri</h3>
+    <div class="card-header">OSGB Hizmetleri</div>
+
 
     <p>
     6331 Sayılı İş Sağlığı ve Güvenliği Kanunu kapsamında
@@ -477,7 +495,8 @@ border-radius:10px;
 
   <!-- EĞİTİM HİZMETLERİ -->
   <div class="service-card">
-    <h3>Eğitim Hizmetleri</h3>
+    <div class="card-header">Eğitim Hizmetleri</div>
+
 
     <p>
     Çalışanların bilinç düzeyini artırmak ve güvenli çalışma kültürü oluşturmak
