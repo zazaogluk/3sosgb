@@ -300,6 +300,45 @@ grid-template-columns:1fr;
 grid-template-columns:1fr;
 }
 }
+  /* SERVICES SCROLL AREA */
+.services-scroll{
+display:flex;
+gap:25px;
+overflow-x:auto;
+scroll-snap-type:x mandatory;
+padding-bottom:20px;
+}
+
+.services-scroll::-webkit-scrollbar{
+height:8px;
+}
+
+.services-scroll::-webkit-scrollbar-thumb{
+background:#002850;
+border-radius:10px;
+}
+
+.service-card{
+min-width:300px;
+flex:0 0 auto;
+background:white;
+padding:30px;
+border-radius:18px;
+box-shadow:0 15px 35px rgba(0,0,0,0.08);
+scroll-snap-align:start;
+transition:0.3s ease;
+}
+
+.service-card:hover{
+transform:translateY(-5px);
+box-shadow:0 20px 45px rgba(0,0,0,0.12);
+}
+
+.service-card h3{
+color:#002850;
+margin-bottom:15px;
+}
+
 </style>
 </head>
 
@@ -355,43 +394,24 @@ grid-template-columns:1fr;
 <!-- HİZMETLER -->
 <section id="hizmetler">
 <h2 class="section-title">HİZMETLERİMİZ</h2>
+<div class="services-scroll">
 
-<h3>Mobil Sağlık</h3>
+  <div class="service-card">
+    <h3>Mobil Sağlık</h3>
+    <p>Yerinde sağlık taramaları ve mobil sağlık çözümleri.</p>
+  </div>
 
-<p>
-Mobil Sağlık Hizmetleri, meslek hastalıklarının önlenmesi ve tespitinin yapılması amacıyla, 
-işyerlerinde çalışanların sağlık taramalarını yerinde ve zaman kaybı olmadan gerçekleştirilen bir hizmettir.
-</p>
+  <div class="service-card">
+    <h3>OSGB Hizmetleri</h3>
+    <p>İşyeri hekimi, iş güvenliği uzmanı ve risk değerlendirme hizmetleri.</p>
+  </div>
 
-<p>
-3S OSGB olarak, iş sağlığı ve güvenliği hizmetlerinde erişilebilirliği ve verimliliği artırmak amacıyla 
-Mobil Sağlık Hizmetlerimizi sizlerle buluşturuyoruz. Çalışanlarınızın sağlık kontrollerini, 
-iş süreçlerinizi aksatmadan ve zaman kaybını en aza indirerek gerçekleştiriyoruz.
-</p>
+  <div class="service-card">
+    <h3>Eğitim Hizmetleri</h3>
+    <p>Temel İSG eğitimleri, yangın ve ilkyardım eğitimleri.</p>
+  </div>
 
-<p><strong>Bu kapsamda:</strong></p>
-
-<ul>
-<li>İşe giriş ve periyodik muayeneler</li>
-<li>Laboratuvar tetkikleri (kan, idrar tahlilleri vb.)</li>
-<li>Akciğer grafisi, odyometri ve solunum fonksiyon testleri</li>
-<li>Aşılama hizmetleri</li>
-<li>İşyeri hekimliği ve diğer sağlık profesyonelleri desteği</li>
-</ul>
-
-<p>
-Donanımlı mobil sağlık araçlarımız ve uzman ekiplerimizle işletmenizin olduğu her noktadayız. 
-Yasal mevzuata tam uyumlu, güvenilir ve hızlı sağlık hizmetini ayağınıza getiriyoruz.
-</p>
-
-<h3>OSGB Hizmetleri</h3>
-<ul>
-<li>İşyeri Hekimi</li>
-<li>İş Güvenliği Uzmanı</li>
-<li>Risk Değerlendirmesi</li>
-<li>Acil Durum Planlaması</li>
-<li>Eğitim Hizmetleri</li>
-</ul>
+</div>
 
 </section>
 
