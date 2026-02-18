@@ -300,23 +300,6 @@ grid-template-columns:1fr;
 grid-template-columns:1fr;
 }
 }
-  /* SERVICES SCROLL AREA */
-.services-scroll{
-display:flex;
-gap:25px;
-overflow-x:auto;
-scroll-snap-type:x mandatory;
-padding-bottom:20px;
-}
-
-.services-scroll::-webkit-scrollbar{
-height:8px;
-}
-
-.services-scroll::-webkit-scrollbar-thumb{
-background:#002850;
-border-radius:10px;
-}
 
 .service-card{
 min-width:300px;
@@ -337,6 +320,43 @@ box-shadow:0 20px 45px rgba(0,0,0,0.12);
 .service-card h3{
 color:#002850;
 margin-bottom:15px;
+}
+/* SERVICES GRID */
+.services-scroll{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:30px;
+}
+
+/* SERVICE CARD */
+.service-card{
+background:white;
+padding:30px;
+border-radius:18px;
+box-shadow:0 15px 35px rgba(0,0,0,0.08);
+height:350px;              /* SABİT YÜKSEKLİK */
+overflow-y:auto;           /* DİKEY SCROLL */
+transition:0.3s ease;
+}
+
+.service-card:hover{
+transform:translateY(-5px);
+box-shadow:0 20px 45px rgba(0,0,0,0.12);
+}
+
+.service-card h3{
+color:#002850;
+margin-bottom:15px;
+}
+
+/* İç scroll bar tasarımı */
+.service-card::-webkit-scrollbar{
+width:6px;
+}
+
+.service-card::-webkit-scrollbar-thumb{
+background:#002850;
+border-radius:10px;
 }
 
 </style>
