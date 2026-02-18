@@ -64,7 +64,6 @@ transition:0.3s;
 color:white;
 }
 
-
 .menu-toggle{
 display:none;
 font-size:28px;
@@ -134,6 +133,53 @@ background:white;
 padding:30px;
 border-radius:16px;
 box-shadow:0 10px 25px rgba(0,0,0,0.06);
+}
+
+/* TEXT IMPROVEMENTS */
+section p{
+line-height:1.8;
+margin-bottom:18px;
+font-size:15px;
+}
+
+section ul{
+margin-left:20px;
+line-height:1.8;
+margin-bottom:20px;
+}
+
+section li{
+margin-bottom:8px;
+}
+
+.section-title{
+position:relative;
+display:inline-block;
+margin-bottom:35px;
+}
+
+.section-title::after{
+content:"";
+display:block;
+width:60px;
+height:3px;
+background:#002850;
+margin-top:10px;
+border-radius:2px;
+}
+
+/* Mission Vision */
+.mv-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+}
+
+.mv-box{
+background:white;
+padding:40px;
+border-radius:18px;
+box-shadow:0 15px 35px rgba(0,0,0,0.08);
 }
 
 /* CONTACT */
@@ -232,14 +278,12 @@ background:#002850;
 padding:25px 0;
 text-align:center;
 }
+
 .nav-links a{
 display:block;
 margin:15px 0;
 }
 
-.nav-links.active a{
-color:white;
-}
 .nav-links.active{
 display:flex;
 }
@@ -252,6 +296,9 @@ display:block;
 grid-template-columns:1fr;
 }
 
+.mv-grid{
+grid-template-columns:1fr;
+}
 }
 </style>
 </head>
@@ -276,47 +323,30 @@ grid-template-columns:1fr;
 <div class="tagline">Sağlık, Sorumluluk, Süreklilik...</div>
 </div>
 </header>
+
 <!-- HAKKIMIZDA -->
 <section id="hakkimizda">
-<h2>Hakkımızda</h2>
+<h2 class="section-title">HAKKIMIZDA</h2>
 <p>
-3S ORTAK SAĞLIK GÜVENLİK BİRİMİ, 15 yılı aşkın deneyimiyle Erdal KORKMAZ, M. Kemal ZAZAOĞLU ve Sinan SEVİM tarafından, 
-kamu ve özel sektörde yer alan firmalara İş Sağlığı ve Güvenliği kapsamında hizmet sağlamak adına kurulmuş,
-Çalışma ve Sosyal Güvenlik Bakanlığı tarafından yetkilendirilmiştir.
+3S ORTAK SAĞLIK VE GÜVENLİK BİRİMİ, 15 yılı aşkın deneyimiyle kamu ve özel sektörde yer alan firmalara İş Sağlığı ve Güvenliği kapsamında hizmet sağlamak adına kurulmuş ve Çalışma ve Sosyal Güvenlik Bakanlığı tarafından yetkilendirilmiştir.
 </p>
 </section>
 
 <!-- MİSYON & VİZYON -->
 <section>
-<div class="services">
+<div class="mv-grid">
 
-<div class="box">
-<h2>Misyonumuz</h2>
-<p>
-  3S OSGB olarak Sağlık, Sorumluluk ve Süreklilik anlayışıyla İş Sağlığı ve Güvenliği Hizmetlerinin sağlanması
-için profesyonel hizmet sağlamayı ilke edinmiştir.
-
-  Sağlık, sosyal hayat ve çalışma hayatında hepimiz için ortak değerdir. Dünya Sağlık Örgütü tanımlamasına göre sağlık;
-bedenen, ruhen ve sosyal açıdan tam bir iyilik halidir.
-
-  Sorumluluk, güvenlik kültürünün temel yapı taşını oluşturmaktadır. İşverenlerin yasal yükümlülüklerini yerine getirmesine rehberlik ederken,
-aynı zamanda tüm çalışanların güvenli davranış bilinciyle hareket etmesini teşvik ediyoruz. Sorumluluk anlayışımız,
-iş yerindeki her bireyin güvenliğinden duyduğumuz vicdani ve mesleki yükümlülüğü kapsar.
-Sunduğumuz danışmanlık ve eğitim hizmetleriyle işverenlerin "iş güvenliği sorumluluğunu" kolaylaştırır, çalışanların ise kendi sağlıkları
-ve güvenlikleri için bilinçli adımlar atmasını sağlarız.
-  Süreklilik, iş sağlığı ve güvenliği açısından vazgeçilmez bir terimdir. İş sağlığı ve güvenliği bir hedef değil, sürekli iyileştirilmesi gereken bir süreçtir. Müşterilerimize sunduğumuz hizmetlerde kesintisiz takip, düzenli denetim ve güncel mevzuata anında uyum sağlama garantisi veriyoruz. İSG süreçlerinin bir belge olmaktan çıkıp, işletmenizin ayrılmaz bir parçası haline gelmesini hedefliyoruz. Güvenliği sürekli kılarak, işletmenizin karşılaşabileceği iş kazaları ve meslek hastalıklarını minimize eder, operasyonel verimliliğinizi koruruz.
-</p>
+<div class="mv-box">
+<h2 class="section-title">MİSYONUMUZ</h2>
+<p>Sağlık, Sorumluluk ve Süreklilik anlayışıyla profesyonel hizmet sunmak temel ilkemizdir.</p>
+<p>İşverenlere rehberlik ederken çalışanların güvenli davranış kültürü geliştirmesini hedefleriz.</p>
+<p>İş sağlığı ve güvenliğini sürekli iyileştirilen bir süreç olarak ele alırız.</p>
 </div>
 
-<div class="box">
-<h2>Vizyonumuz</h2>
-<p>
-Sağlık, Sorumluluk ve Sürekliliği Bütünleştiren Bir Gelecek
-3S OSGB olarak vizyonumuz; sağlıklı bireylerin, sorumluluk bilinciyle yönetilen işletmelerin ve bu iki değerin kaynaşmasından doğan sürekliliğin standart haline geldiği bir gelecek inşa etmektir.
-Amacımız, iş sağlığı ve güvenliği hizmetlerini yalnızca yasal bir zorunluluk olarak gören anlayışın ötesine geçerek; çalışanların fiziksel ve ruhsal sağlığını merkeze alan, işverenlerin toplumsal ve hukuki sorumluluğunu en üst düzeyde hissettiği ve tüm bu süreçlerin sürekliliğini garanti altına alan bir ekosistem oluşturmaktır.
-Bu üç temel ilkenin birbirini beslediği güçlü bir sinerjiyle, iş kazalarının ve meslek hastalıklarının olmadığı, üretkenliğin ve çalışan mutluluğunun arttığı sürdürülebilir bir iş dünyasının öncüsü olmayı hedefliyoruz. Vizyonumuz, 3S felsefemizin ışığında, güvenliğin bir kültür haline geldiği yarınlara ulaşmaktır.
-
-</p>
+<div class="mv-box">
+<h2 class="section-title">VİZYONUMUZ</h2>
+<p><strong>Sağlık, Sorumluluk ve Sürekliliği Bütünleştiren Bir Gelecek</strong></p>
+<p>İSG kültürünü işletmelerde sürdürülebilir bir değer haline getirmek vizyonumuzdur.</p>
 </div>
 
 </div>
@@ -324,49 +354,32 @@ Bu üç temel ilkenin birbirini beslediği güçlü bir sinerjiyle, iş kazalar�
 
 <!-- HİZMETLER -->
 <section id="hizmetler">
-<h2>Hizmetlerimiz</h2>
+<h2 class="section-title">HİZMETLERİMİZ</h2>
 
-<div class="services">
+<h3>Mobil Sağlık</h3>
+<ul>
+<li>İşe giriş ve periyodik muayeneler</li>
+<li>Laboratuvar tetkikleri</li>
+<li>Akciğer grafisi ve odyometri</li>
+<li>Aşılama hizmetleri</li>
+</ul>
 
-<div class="box">
-<h3>İş Güvenliği Uzmanlığı</h3>
-<p>İşyerlerinde risk analizi, saha denetimi ve yasal danışmanlık hizmetleri.</p>
-</div>
+<h3>OSGB Hizmetleri</h3>
+<ul>
+<li>İşyeri Hekimi</li>
+<li>İş Güvenliği Uzmanı</li>
+<li>Risk Değerlendirmesi</li>
+<li>Acil Durum Planlaması</li>
+<li>Eğitim Hizmetleri</li>
+</ul>
 
-<div class="box">
-<h3>İşyeri Hekimliği</h3>
-<p>Çalışanların periyodik sağlık kontrolleri ve koruyucu sağlık hizmetleri.</p>
-</div>
-
-<div class="box">
-<h3>Risk Analizi</h3>
-<p>İş yerindeki tehlikelerin belirlenmesi ve önleyici planların oluşturulması.</p>
-</div>
-
-<div class="box">
-<h3>Acil Durum Planları</h3>
-<p>Yangın, deprem ve diğer acil durumlara yönelik planlama ve eğitim hizmetleri.</p>
-</div>
-
-<div class="box">
-<h3>İSG Eğitimleri</h3>
-<p>Yasal zorunlu iş sağlığı ve güvenliği eğitimleri.</p>
-</div>
-
-<div class="box">
-<h3>Sağlık Taramaları</h3>
-<p>Mobil sağlık hizmetleri ve periyodik muayene organizasyonları.</p>
-</div>
-
-</div>
 </section>
 
-
+<!-- İLETİŞİM -->
 <section id="iletisim">
-<h2>İletişim</h2>
+<h2 class="section-title">İLETİŞİM</h2>
 
 <div class="contact-wrapper">
-
 <div>
 <p><strong>Telefon:</strong> 0216 642 6331</p>
 <p><strong>E-posta:</strong> info@3sosgb.com</p>
@@ -379,23 +392,16 @@ Zin D İş Merkezi No:1 K:3 D:13<br>
 
 <form id="contactForm" class="contact-form">
 <input type="hidden" name="_captcha" value="false">
-
 <input type="text" name="Ad Soyad" placeholder="Ad Soyad" required>
 <input type="email" name="Email" placeholder="E-posta" required>
 <input type="text" name="Konu" placeholder="Konu" required>
 <textarea name="Mesaj" rows="5" placeholder="Mesajınız..." required></textarea>
-
 <button type="submit">Mesaj Gönder</button>
 </form>
-
 </div>
 
-<!-- DOĞRU HARİTA KONUMU -->
 <div class="map-container">
-<iframe 
-src="https://www.google.com/maps?q=3S+OSGB+Çekmeköy+İstanbul&output=embed"
-loading="lazy">
-</iframe>
+<iframe src="https://www.google.com/maps?q=3S+OSGB+Çekmeköy+İstanbul&output=embed" loading="lazy"></iframe>
 </div>
 
 </section>
@@ -407,14 +413,11 @@ Mesajınız başarıyla iletilmiştir.
 <footer>
 <p style="text-align:center;">
 <a href="tel:02166426331">0216 642 6331</a><br>
-Mimar Sinan Mah. Çavuşbaşı Cad. Özge Sok.<br>
-Zin D İş Merkezi No:1 K:3 D:13<br>
 Çekmeköy / İstanbul
 </p>
 </footer>
 
 <script>
-
 function toggleMenu(){
 document.getElementById("navLinks").classList.toggle("active");
 }
@@ -428,12 +431,9 @@ navbar.classList.remove("scrolled");
 }
 });
 
-/* AJAX FORM */
 document.getElementById("contactForm").addEventListener("submit", function(e){
 e.preventDefault();
-
 let formData = new FormData(this);
-
 fetch("https://formsubmit.co/ajax/info@3sosgb.com", {
 method: "POST",
 body: formData
@@ -442,14 +442,12 @@ body: formData
 .then(data => {
 document.getElementById("successMessage").style.display = "block";
 document.getElementById("contactForm").reset();
-
 setTimeout(() => {
 document.getElementById("successMessage").style.display = "none";
 }, 3000);
 })
 .catch(error => alert("Bir hata oluştu. Lütfen tekrar deneyin."));
 });
-
 </script>
 
 </body>
