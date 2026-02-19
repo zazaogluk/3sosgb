@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>3S OSGB | İş Sağlığı ve Güvenliği</title>
-
 <meta name="description" content="3S OSGB - İş Sağlığı ve Güvenliği hizmetleri.">
 
 <link rel="icon" href="favicon.ico">
@@ -12,422 +11,335 @@
 
 <style>
 body{
-margin:0;
-font-family:'Inter',sans-serif;
-background:#f4f6f8;
-color:#333;
-scroll-behavior:smooth;
+  margin:0;
+  font-family:'Inter',sans-serif;
+  background:#f4f6f8;
+  color:#333;
+  scroll-behavior:smooth;
 }
 
 /* NAVBAR */
 .navbar{
-position:fixed;
-top:0;
-width:100%;
-padding:18px 60px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-transition:0.4s ease;
-z-index:1000;
+  position:fixed;
+  top:0;
+  width:100%;
+  padding:18px 60px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  transition:0.4s ease;
+  z-index:1000;
 }
 
 .navbar.scrolled{
-background:rgba(0,40,80,0.95);
-backdrop-filter:blur(10px);
+  background:rgba(0,40,80,0.95);
+  backdrop-filter:blur(10px);
 }
 
 .small-logo{
-height:40px;
-opacity:0;
-transition:0.4s ease;
+  height:40px;
+  opacity:0;
+  transition:0.4s ease;
 }
 
 .navbar.scrolled .small-logo{
-opacity:1;
+  opacity:1;
 }
 
 .nav-links{
-display:flex;
-align-items:center;
+  display:flex;
+  align-items:center;
 }
 
 .nav-links a{
-text-decoration:none;
-margin-left:30px;
-color:transparent;
-font-weight:500;
-transition:0.3s;
+  text-decoration:none;
+  margin-left:30px;
+  color:transparent;
+  font-weight:500;
+  transition:0.3s;
 }
 
 .navbar.scrolled .nav-links a{
-color:white;
+  color:white;
 }
 
 .menu-toggle{
-display:none;
-font-size:28px;
-color:white;
-cursor:pointer;
+  display:none;
+  font-size:28px;
+  color:white;
+  cursor:pointer;
 }
 
 /* HERO */
 header{
-height:100vh;
-background:linear-gradient(135deg,#002850,#003f7d);
-display:flex;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:0 20px;
+  height:100vh;
+  background:linear-gradient(135deg,#002850,#003f7d);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:0 20px;
 }
 
 .hero-content{
-background:rgba(255,255,255,0.08);
-padding:60px;
-border-radius:25px;
-backdrop-filter:blur(12px);
-animation:fadeIn 1.5s ease forwards;
-opacity:0;
+  background:rgba(255,255,255,0.08);
+  padding:60px;
+  border-radius:25px;
+  backdrop-filter:blur(12px);
+  animation:fadeIn 1.5s ease forwards;
+  opacity:0;
 }
 
 @keyframes fadeIn{
-to{opacity:1;}
+  to{opacity:1;}
 }
 
 .hero-logo img{
-width:260px;
-max-width:85%;
-margin-bottom:25px;
-filter:drop-shadow(0 0 20px rgba(255,255,255,0.25));
+  width:260px;
+  max-width:85%;
+  margin-bottom:25px;
+  filter:drop-shadow(0 0 20px rgba(255,255,255,0.25));
 }
 
 .tagline{
-font-weight:100;
-font-style:italic;
-font-size:1.4em;
-margin-bottom:40px;
-color:white;
+  font-weight:100;
+  font-style:italic;
+  font-size:1.4em;
+  margin-bottom:40px;
+  color:white;
 }
 
 /* SECTIONS */
 section{
-max-width:1100px;
-margin:auto;
-padding:100px 20px;
+  max-width:1100px;
+  margin:auto;
+  padding:100px 20px;
 }
 
 h2{
-color:#002850;
-margin-bottom:25px;
-}
-
-.services{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:30px;
-}
-
-.box{
-background:white;
-padding:30px;
-border-radius:16px;
-box-shadow:0 10px 25px rgba(0,0,0,0.06);
-}
-
-/* TEXT IMPROVEMENTS */
-section p{
-line-height:1.8;
-margin-bottom:18px;
-font-size:15px;
-}
-
-section ul{
-margin-left:20px;
-line-height:1.8;
-margin-bottom:20px;
-}
-
-section li{
-margin-bottom:8px;
+  color:#002850;
+  margin-bottom:25px;
 }
 
 .section-title{
-position:relative;
-display:inline-block;
-margin-bottom:35px;
+  position:relative;
+  display:inline-block;
+  margin-bottom:35px;
 }
 
 .section-title::after{
-content:"";
-display:block;
-width:60px;
-height:3px;
-background:#002850;
-margin-top:10px;
-border-radius:2px;
+  content:"";
+  display:block;
+  width:60px;
+  height:3px;
+  background:#002850;
+  margin-top:10px;
+  border-radius:2px;
 }
 
 /* Mission Vision */
 .mv-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:40px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
 }
 
 .mv-box{
-background:white;
-padding:40px;
-border-radius:18px;
-box-shadow:0 15px 35px rgba(0,0,0,0.08);
+  background:white;
+  padding:40px;
+  border-radius:18px;
+  box-shadow:0 15px 35px rgba(0,0,0,0.08);
 }
 
 /* CONTACT */
 .contact-wrapper{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:40px;
-margin-bottom:50px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  margin-bottom:50px;
 }
 
 .contact-form{
-display:flex;
-flex-direction:column;
-gap:15px;
+  display:flex;
+  flex-direction:column;
+  gap:15px;
 }
 
 .contact-form input,
 .contact-form textarea{
-padding:14px;
-border-radius:10px;
-border:1px solid #ddd;
-font-family:inherit;
+  padding:14px;
+  border-radius:10px;
+  border:1px solid #ddd;
+  font-family:inherit;
 }
 
 .contact-form button{
-background:#002850;
-color:white;
-padding:14px;
-border:none;
-border-radius:30px;
-font-weight:600;
-cursor:pointer;
-transition:0.3s;
+  background:#002850;
+  color:white;
+  padding:14px;
+  border:none;
+  border-radius:30px;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s;
 }
 
 .contact-form button:hover{
-background:#001f3d;
+  background:#001f3d;
 }
 
 /* SUCCESS POPUP */
 .success-message{
-position:fixed;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-background:#002850;
-color:white;
-padding:25px 40px;
-border-radius:15px;
-box-shadow:0 15px 40px rgba(0,0,0,0.3);
-display:none;
-z-index:2000;
-font-weight:500;
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  background:#002850;
+  color:white;
+  padding:25px 40px;
+  border-radius:15px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.3);
+  display:none;
+  z-index:2000;
+  font-weight:500;
 }
 
 /* MAP */
 .map-container{
-height:450px;
-border-radius:18px;
-overflow:hidden;
-border:3px solid #002850;
-margin-top:40px;
+  height:450px;
+  border-radius:18px;
+  overflow:hidden;
+  border:3px solid #002850;
+  margin-top:40px;
 }
 
 .map-container iframe{
-width:100%;
-height:100%;
-border:0;
+  width:100%;
+  height:100%;
+  border:0;
 }
 
 /* FOOTER */
 footer{
-background:#002850;
-color:white;
-padding:50px 20px;
+  background:#002850;
+  color:white;
+  padding:50px 20px;
+  text-align:center;
 }
 
 footer a{
-color:white;
-text-decoration:none;
+  color:white;
+  text-decoration:none;
 }
 
 /* MOBILE */
 @media(max-width:768px){
+  .navbar{padding:15px 20px;}
 
-.navbar{padding:15px 20px;}
+  .nav-links{
+    display:flex;
+    flex-direction:column;
+    position:absolute;
+    top:70px;
+    left:0;
+    width:100%;
+    background:#002850;
+    overflow:hidden;
+    max-height:0;
+    transition: max-height 0.3s ease;
+    text-align:center;
+    padding:0;
+  }
 
-.nav-links{
-  display:flex;               /* flex olarak bırak */
-  flex-direction:column;
-  position:absolute;
-  top:70px;
-  left:0;
-  width:100%;
-  background:#002850;
-  overflow:hidden;            /* taşmayı gizle */
-  max-height:0;               /* başlangıçta kapalı */
-  transition: max-height 0.3s ease; /* animasyon ekle */
-  text-align:center;
-  padding:0;                  /* kapalıyken padding yok */
+  .nav-links a{
+    display:block;
+    margin:15px 0;
+  }
+
+  .nav-links.active{
+    max-height:500px;
+    padding:25px 0;
+  }
+
+  .menu-toggle{
+    display:block;
+  }
+
+  .contact-wrapper{
+    grid-template-columns:1fr;
+  }
+
+  .mv-grid{
+    grid-template-columns:1fr;
+  }
+
+  .services-scroll{
+    grid-template-columns:1fr;
+  }
 }
 
-
-.nav-links a{
-display:block;
-margin:15px 0;
-}
-
-.nav-links.active{
-  max-height:500px;   /* tüm linkler sığacak kadar yüksek */
-  padding:25px 0;     /* açılınca padding ekle */
-}
-
-
-.menu-toggle{
-display:block;
-}
-
-.contact-wrapper{
-grid-template-columns:1fr;
-}
-
-.mv-grid{
-grid-template-columns:1fr;
-}
-}
-
-.service-card{
-min-width:300px;
-flex:0 0 auto;
-background:white;
-padding:30px;
-border-radius:18px;
-box-shadow:0 15px 35px rgba(0,0,0,0.08);
-scroll-snap-align:start;
-transition:0.3s ease;
-}
-
-.service-card:hover{
-transform:translateY(-5px);
-box-shadow:0 20px 45px rgba(0,0,0,0.12);
-}
-
-.service-card h3{
-color:#002850;
-margin-bottom:15px;
-}
 /* SERVICES GRID */
 .services-scroll{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:30px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
 }
 
-/* SERVICE CARD */
 /* SERVICE CARD */
 .service-card{
   background:white;
   border-radius:18px;
   box-shadow:0 15px 35px rgba(0,0,0,0.08);
-  height:380px;                 /* Sabit yükseklik */
+  height:380px;
   display:flex;
   flex-direction:column;
   transition:0.3s ease;
-  overflow:hidden;              /* Dış taşma kapalı */
-  /* width, max-width ve margin satırları kaldırıldı */
+  overflow:hidden;
+  padding-top:0;
 }
 
 /* CARD HEADER STRIP */
-.card-header {
-  flex-shrink: 0;
-  background: #002850;
-  color: white;
-  padding: 15px 20px;
-  margin: 0;                  /* Margin sıfırla, kutunun kenarına yapışsın */
-  border-radius: 18px 18px 0 0;
-  font-weight: 600;
-  font-size: 18px;
-  letter-spacing: 0.5px;
-
-  text-align: center;
-  text-transform: uppercase;
-
-  width: 100%;               /* Başlık kutunun genişliğini kaplar */
-  box-sizing: border-box;    /* Padding dahil tam genişlik */
+.card-header{
+  flex-shrink:0;
+  background:#002850;
+  color:white;
+  padding:15px 20px;
+  margin:0;
+  border-radius:18px 18px 0 0;
+  font-weight:600;
+  font-size:18px;
+  letter-spacing:0.5px;
+  text-align:center;
+  text-transform:uppercase;
+  width:100%;
+  box-sizing:border-box;
 }
 
-
-/* CONTENT - SCROLL ALANI */
+/* CARD CONTENT */
 .card-content{
-flex:1;                      /* Kalan alanı kaplar */
-overflow-y:auto;             /* Dikey scroll */
-padding:20px;
+  flex:1;
+  overflow-y:auto;
+  padding:20px;
 }
 
-/* İç scroll bar tasarımı */
+/* SCROLLBAR */
 .card-content::-webkit-scrollbar{
-width:10px;
+  width:10px;
 }
 
 .card-content::-webkit-scrollbar-thumb{
-background:#002850;
-border-radius:10px;
+  background:#002850;
+  border-radius:10px;
 }
 
-
 .service-card:hover{
-transform:translateY(-5px);
-box-shadow:0 20px 45px rgba(0,0,0,0.12);
+  transform:translateY(-5px);
+  box-shadow:0 20px 45px rgba(0,0,0,0.12);
 }
 
 .service-card h3{
-color:#002850;
-margin-bottom:15px;
-}
-
-/* İç scroll bar tasarımı */
-.service-card::-webkit-scrollbar{
-width:6px;
-}
-
-.service-card::-webkit-scrollbar-thumb{
-background:#002850;
-border-radius:10px;
-}
-/* CARD HEADER STRIP */
-.card-header {
-  flex-shrink: 0;
-  background: #002850;
-  color: white;
-  padding: 15px 20px;
-  margin: 0;                  /* Margin sıfırla, kutunun kenarına yapışsın */
-  border-radius: 18px 18px 0 0;
-  font-weight: 600;
-  font-size: 18px;
-  letter-spacing: 0.5px;
-
-  text-align: center;
-  text-transform: uppercase;
-
-  width: 100%;             /* Kutunun yatay genişliğine eşit */
-  box-sizing: border-box;    /* Padding dahil tam genişlik */
-}
-
-
-/* Kart iç padding ayarı */
-.service-card{
-padding-top:0; /* Üst paddingi kaldırıyoruz çünkü header var */
+  color:#002850;
+  margin-bottom:15px;
 }
 
 </style>
@@ -487,19 +399,14 @@ padding-top:0; /* Üst paddingi kaldırıyoruz çünkü header var */
 <h2 class="section-title">HİZMETLERİMİZ</h2>
 <div class="services-scroll">
 
-  <!-- MOBİL SAĞLIK -->
   <div class="service-card">
     <div class="card-header">Mobil Sağlık</div>
     <div class="card-content">
-      <p>
-        Mobil Sağlık Hizmetleri, Meslek Hastalıklarının önlenmesi ve tespitinin yapılması amacıyla,
-        işyerlerinde çalışanların sağlık taramalarını yerinde ve zaman kaybı olmadan gerçekleştirilen bir hizmettir. 
-      </p>
-      <p>
-        3S OSGB olarak, iş sağlığı ve güvenliği hizmetlerinde erişilebilirliği ve verimliliği artırmak amacıyla
+      <p>Mobil Sağlık Hizmetleri, Meslek Hastalıklarının önlenmesi ve tespitinin yapılması amacıyla,
+        işyerlerinde çalışanların sağlık taramalarını yerinde ve zaman kaybı olmadan gerçekleştirilen bir hizmettir.</p>
+      <p>3S OSGB olarak, iş sağlığı ve güvenliği hizmetlerinde erişilebilirliği ve verimliliği artırmak amacıyla
         Mobil Sağlık Hizmetlerimizi sizlerle buluşturuyoruz. Çalışanlarınızın sağlık kontrollerini, iş süreçlerinizi
-        aksatmadan ve zaman kaybını en aza indirerek gerçekleştirmek için güçlü çözüm ortaklarımızla iş birliği yapıyoruz.
-      </p>
+        aksatmadan ve zaman kaybını en aza indirerek gerçekleştirmek için güçlü çözüm ortaklarımızla iş birliği yapıyoruz.</p>
       <p><strong>Bu kapsamda:</strong></p>
       <ul>
         <li>İşe giriş ve periyodik muayeneler</li>
@@ -508,27 +415,16 @@ padding-top:0; /* Üst paddingi kaldırıyoruz çünkü header var */
         <li>Aşılama hizmetleri</li>
         <li>İşyeri hekimliği ve diğer sağlık profesyonelleri desteği</li>
       </ul>
-      <p>
-        alanlarında donanımlı mobil sağlık araçlarımız ve uzman ekiplerimizle işletmenizin
-        olduğu her noktadayız. Çözüm ortaklarımızın geniş hizmet ağı ve teknik altyapısı
-        sayesinde, taleplerinize hızlı, kaliteli ve esnek çözümler sunuyor; yasal mevzuata tam uyumlu,
-        güvenilir sağlık hizmetini ayağınıza getiriyoruz.
-      </p>
-      <p>
-        Böylece siz, asıl işinize odaklanırken; çalışanlarınızın sağlığını koruma sorumluluğunu,
-        süreklilik esasına dayalı bir anlayışla birlikte yönetiyoruz.
-      </p>
+      <p>Böylece siz, asıl işinize odaklanırken; çalışanlarınızın sağlığını koruma sorumluluğunu,
+        süreklilik esasına dayalı bir anlayışla birlikte yönetiyoruz.</p>
     </div>
   </div>
 
-  <!-- OSGB HİZMETLERİ -->
   <div class="service-card">
     <div class="card-header">OSGB Hizmetleri</div>
     <div class="card-content">
-      <p>
-        6331 Sayılı İş Sağlığı ve Güvenliği Kanunu kapsamında
-        işverenlerin yükümlülüklerini yerine getirmelerine destek sağlıyoruz.
-      </p>
+      <p>6331 Sayılı İş Sağlığı ve Güvenliği Kanunu kapsamında
+        işverenlerin yükümlülüklerini yerine getirmelerine destek sağlıyoruz.</p>
       <ul>
         <li>İşyeri Hekimi Hizmeti</li>
         <li>İş Güvenliği Uzmanlığı</li>
@@ -537,21 +433,16 @@ padding-top:0; /* Üst paddingi kaldırıyoruz çünkü header var */
         <li>Acil Durum Planlaması</li>
         <li>Yıllık Çalışma Planı ve Raporlama</li>
       </ul>
-      <p>
-        İşletmenizin ihtiyaçlarına özel çözümler sunarak
-        mevzuata tam uyum sağlıyoruz.
-      </p>
+      <p>İşletmenizin ihtiyaçlarına özel çözümler sunarak
+        mevzuata tam uyum sağlıyoruz.</p>
     </div>
   </div>
 
-  <!-- EĞİTİM HİZMETLERİ -->
   <div class="service-card">
     <div class="card-header">Eğitim Hizmetleri</div>
     <div class="card-content">
-      <p>
-        Çalışanların bilinç düzeyini artırmak ve güvenli çalışma kültürü oluşturmak
-        amacıyla uygulamalı ve teorik eğitimler düzenliyoruz.
-      </p>
+      <p>Çalışanların bilinç düzeyini artırmak ve güvenli çalışma kültürü oluşturmak
+        amacıyla uygulamalı ve teorik eğitimler düzenliyoruz.</p>
       <ul>
         <li>Temel İş Sağlığı ve Güvenliği Eğitimi</li>
         <li>Yüksekte Çalışma Eğitimi</li>
@@ -559,16 +450,11 @@ padding-top:0; /* Üst paddingi kaldırıyoruz çünkü header var */
         <li>İlkyardım Eğitimi</li>
         <li>Acil Durum ve Tahliye Eğitimi</li>
       </ul>
-      <p>
-        Eğitimlerimiz hem yasal gereklilikleri karşılar hem de
-        kurumsal güvenlik kültürünü güçlendirir.
-      </p>
     </div>
   </div>
 
 </div>
 </section>
-
 
 <!-- İLETİŞİM -->
 <section id="iletisim">
@@ -606,7 +492,7 @@ Mesajınız başarıyla iletilmiştir.
 </div>
 
 <footer>
-<p style="text-align:center;">
+<p>
 <a href="tel:02166426331">0216 642 6331</a><br>
 Mimar Sinan Mah. Çavuşbaşı Cad. Özge Sok.<br>
 Zin D İş Merkezi No:1 K:3 D:13<br>
@@ -616,34 +502,34 @@ Zin D İş Merkezi No:1 K:3 D:13<br>
 
 <script>
 function toggleMenu(){
-document.getElementById("navLinks").classList.toggle("active");
+  document.getElementById("navLinks").classList.toggle("active");
 }
 
 window.addEventListener("scroll",function(){
-const navbar=document.getElementById("navbar");
-if(window.scrollY>50){
-navbar.classList.add("scrolled");
-}else{
-navbar.classList.remove("scrolled");
-}
+  const navbar=document.getElementById("navbar");
+  if(window.scrollY>50){
+    navbar.classList.add("scrolled");
+  }else{
+    navbar.classList.remove("scrolled");
+  }
 });
 
 document.getElementById("contactForm").addEventListener("submit", function(e){
-e.preventDefault();
-let formData = new FormData(this);
-fetch("https://formsubmit.co/ajax/info@3sosgb.com", {
-method: "POST",
-body: formData
-})
-.then(response => response.json())
-.then(data => {
-document.getElementById("successMessage").style.display = "block";
-document.getElementById("contactForm").reset();
-setTimeout(() => {
-document.getElementById("successMessage").style.display = "none";
-}, 3000);
-})
-.catch(error => alert("Bir hata oluştu. Lütfen tekrar deneyin."));
+  e.preventDefault();
+  let formData = new FormData(this);
+  fetch("https://formsubmit.co/ajax/info@3sosgb.com", {
+    method: "POST",
+    body: formData
+  })
+  .then(response => response.json())
+  .then(data => {
+    document.getElementById("successMessage").style.display = "block";
+    document.getElementById("contactForm").reset();
+    setTimeout(() => {
+      document.getElementById("successMessage").style.display = "none";
+    }, 3000);
+  })
+  .catch(error => alert("Bir hata oluştu. Lütfen tekrar deneyin."));
 });
 </script>
 
