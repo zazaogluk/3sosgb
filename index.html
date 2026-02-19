@@ -16,7 +16,6 @@ body{
   background:#f4f6f8;
   color:#333;
   scroll-behavior:smooth;
-  overflow-x:hidden;
 }
 
 /* NAVBAR */
@@ -47,113 +46,28 @@ body{
   opacity:1;
 }
 
-/* HAMBURGER */
-.menu-toggle{
-  width:30px;
-  height:22px;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  cursor:pointer;
-  z-index:1100;
-}
-
-.menu-toggle span{
-  height:3px;
-  width:100%;
-  background:white;
-  border-radius:2px;
-  transition:0.4s ease;
-}
-
-/* X ANİMASYONU */
-.menu-toggle.active span:nth-child(1){
-  transform:rotate(45deg) translate(5px,5px);
-}
-
-.menu-toggle.active span:nth-child(2){
-  opacity:0;
-}
-
-.menu-toggle.active span:nth-child(3){
-  transform:rotate(-45deg) translate(6px,-6px);
-}
-
-/* OVERLAY */
-.overlay{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.5);
-  opacity:0;
-  visibility:hidden;
-  transition:0.4s ease;
-  z-index:900;
-}
-
-.overlay.active{
-  opacity:1;
-  visibility:visible;
-}
-
-/* NAV MENU (SLIDE) */
 .nav-links{
-  position:fixed;
-  top:0;
-  right:-320px;
-  height:100%;
-  width:280px;
-  background:#002850;
-  padding:100px 30px;
-  transition:0.4s ease;
-  z-index:1000;
-  overflow-y:auto;
-}
-
-.nav-links.active{
-  right:0;
-}
-
-.nav-links ul{
-  list-style:none;
-  padding:0;
-  margin:0;
-}
-
-.nav-links li{
-  margin-bottom:20px;
+  display:flex;
+  align-items:center;
 }
 
 .nav-links a{
   text-decoration:none;
-  color:white;
+  margin-left:30px;
+  color:transparent;
   font-weight:500;
-  display:block;
   transition:0.3s;
 }
 
-.nav-links a:hover{
-  opacity:0.8;
+.navbar.scrolled .nav-links a{
+  color:white;
 }
 
-/* DROPDOWN */
-.dropdown-menu{
-  max-height:0;
-  overflow:hidden;
-  transition:0.4s ease;
-  padding-left:15px;
-}
-
-.dropdown.active .dropdown-menu{
-  max-height:300px;
-  margin-top:10px;
-}
-
-.dropdown-menu a{
-  font-size:14px;
-  margin-bottom:10px;
+.menu-toggle{
+  display:none;
+  font-size:28px;
+  color:white;
+  cursor:pointer;
 }
 
 /* HERO */
@@ -194,38 +108,252 @@ header{
   margin-bottom:40px;
   color:white;
 }
+
+/* SECTIONS */
+section{
+  max-width:1100px;
+  margin:auto;
+  padding:100px 20px;
+}
+
+h2{
+  color:#002850;
+  margin-bottom:25px;
+}
+
+.section-title{
+  position:relative;
+  display:inline-block;
+  margin-bottom:35px;
+}
+
+.section-title::after{
+  content:"";
+  display:block;
+  width:60px;
+  height:3px;
+  background:#002850;
+  margin-top:10px;
+  border-radius:2px;
+}
+
+/* Mission Vision */
+.mv-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+}
+
+.mv-box{
+  background:white;
+  padding:40px;
+  border-radius:18px;
+  box-shadow:0 15px 35px rgba(0,0,0,0.08);
+}
+
+/* CONTACT */
+.contact-wrapper{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  margin-bottom:50px;
+}
+
+.contact-form{
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+}
+
+.contact-form input,
+.contact-form textarea{
+  padding:14px;
+  border-radius:10px;
+  border:1px solid #ddd;
+  font-family:inherit;
+}
+
+.contact-form button{
+  background:#002850;
+  color:white;
+  padding:14px;
+  border:none;
+  border-radius:30px;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.contact-form button:hover{
+  background:#001f3d;
+}
+
+/* SUCCESS POPUP */
+.success-message{
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  background:#002850;
+  color:white;
+  padding:25px 40px;
+  border-radius:15px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.3);
+  display:none;
+  z-index:2000;
+  font-weight:500;
+}
+
+/* MAP */
+.map-container{
+  height:450px;
+  border-radius:18px;
+  overflow:hidden;
+  border:3px solid #002850;
+  margin-top:40px;
+}
+
+.map-container iframe{
+  width:100%;
+  height:100%;
+  border:0;
+}
+
+/* FOOTER */
+footer{
+  background:#002850;
+  color:white;
+  padding:50px 20px;
+  text-align:center;
+}
+
+footer a{
+  color:white;
+  text-decoration:none;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .navbar{padding:15px 20px;}
+
+  .nav-links{
+    display:flex;
+    flex-direction:column;
+    position:absolute;
+    top:70px;
+    left:0;
+    width:100%;
+    background:#002850;
+    overflow:hidden;
+    max-height:0;
+    transition: max-height 0.3s ease;
+    text-align:center;
+    padding:0;
+  }
+
+  .nav-links a{
+    display:block;
+    margin:15px 0;
+  }
+
+  .nav-links.active{
+    max-height:500px;
+    padding:25px 0;
+  }
+
+  .menu-toggle{
+    display:block;
+  }
+
+  .contact-wrapper{
+    grid-template-columns:1fr;
+  }
+
+  .mv-grid{
+    grid-template-columns:1fr;
+  }
+
+  .services-scroll{
+    grid-template-columns:1fr;
+  }
+}
+
+/* SERVICES GRID */
+.services-scroll{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
+}
+
+/* SERVICE CARD */
+.service-card{
+  background:white;
+  border-radius:18px;
+  box-shadow:0 15px 35px rgba(0,0,0,0.08);
+  height:380px;
+  display:flex;
+  flex-direction:column;
+  transition:0.3s ease;
+  overflow:hidden;
+  padding-top:0;
+}
+
+/* CARD HEADER STRIP */
+.card-header{
+  flex-shrink:0;
+  background:#002850;
+  color:white;
+  padding:15px 20px;
+  margin:0;
+  border-radius:18px 18px 0 0;
+  font-weight:600;
+  font-size:18px;
+  letter-spacing:0.5px;
+  text-align:center;
+  text-transform:uppercase;
+  width:100%;
+  box-sizing:border-box;
+}
+
+/* CARD CONTENT */
+.card-content{
+  flex:1;
+  overflow-y:auto;
+  padding:20px;
+}
+
+/* SCROLLBAR */
+.card-content::-webkit-scrollbar{
+  width:10px;
+}
+
+.card-content::-webkit-scrollbar-thumb{
+  background:#002850;
+  border-radius:10px;
+}
+
+.service-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 20px 45px rgba(0,0,0,0.12);
+}
+
+.service-card h3{
+  color:#002850;
+  margin-bottom:15px;
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="overlay" id="overlay" onclick="closeMenu()"></div>
-
 <div class="navbar" id="navbar">
 <img class="small-logo" src="https://raw.githubusercontent.com/zazaogluk/3sosgb/main/Logo.png?v=8">
-
-<div class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
-  <span></span>
-  <span></span>
-  <span></span>
-</div>
-
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
 <div class="nav-links" id="navLinks">
-<ul>
-  <li><a href="#" onclick="closeMenu()">Anasayfa</a></li>
-  <li><a href="#hakkimizda" onclick="closeMenu()">Kurumsal</a></li>
-
-  <li class="dropdown">
-    <a href="javascript:void(0)" onclick="toggleDropdown()">Hizmetlerimiz</a>
-    <div class="dropdown-menu">
-      <a href="#osgb" onclick="closeMenu()">OSGB Hizmetleri</a>
-      <a href="#mobil" onclick="closeMenu()">Mobil Sağlık Hizmetleri</a>
-      <a href="#egitim" onclick="closeMenu()">Eğitim Hizmetleri</a>
-    </div>
-  </li>
-
-  <li><a href="#iletisim" onclick="closeMenu()">İletişim</a></li>
-</ul>
+<a href="#hakkimizda">Hakkımızda</a>
+<a href="#hizmetler">Hizmetler</a>
+<a href="#iletisim">İletişim</a>
 </div>
 </div>
 
@@ -238,26 +366,146 @@ header{
 </div>
 </header>
 
+<!-- HAKKIMIZDA -->
+<section id="hakkimizda">
+<h2 class="section-title">HAKKIMIZDA</h2>
+<p>
+3S ORTAK SAĞLIK GÜVENLİK BİRİMİ, 2011 yılından beri sektörün içerisinde olan Erdal KORKMAZ, M. Kemal ZAZAOĞLU ve Sinan SEVİM tarafından, kamu ve özel sektörde yer alan firmalara İş Sağlığı ve Güvenliği kapsamında hizmet sağlamak adına kurulmuş, Çalışma ve Sosyal Güvenlik Bakanlığı tarafından yetkilendirilmiştir.
+</p>
+</section>
+
+<!-- MİSYON & VİZYON -->
+<section>
+<div class="mv-grid">
+
+<div class="mv-box">
+<h2 class="section-title">MİSYONUMUZ</h2>
+<p>3S OSGB olarak Sağlık, Sorumluluk ve Süreklilik anlayışıyla İş Sağlığı ve Güvenliği Hizmetlerinin sağlanması için profesyonel hizmet sağlamayı ilke edinmiştir.</p>
+<p>Sağlık, sosyal hayat ve çalışma hayatında hepimiz için ortak değerdir. Dünya Sağlık Örgütü tanımlamasına göre sağlık; bedenen, ruhen ve sosyal açıdan tam bir iyilik halidir.</p>
+<p>Sorumluluk, güvenlik kültürünün temel yapı taşını oluşturmaktadır. İşverenlerin yasal yükümlülüklerini yerine getirmesine rehberlik ederken, aynı zamanda tüm çalışanların güvenli davranış bilinciyle hareket etmesini teşvik ediyoruz. Sorumluluk anlayışımız, iş yerindeki her bireyin güvenliğinden duyduğumuz vicdani ve mesleki yükümlülüğü kapsar. Sunduğumuz danışmanlık ve eğitim hizmetleriyle işverenlerin "iş güvenliği sorumluluğunu" kolaylaştırır, çalışanların ise kendi sağlıkları ve güvenlikleri için bilinçli adımlar atmasını sağlarız.</p>
+<p>Süreklilik, iş sağlığı ve güvenliği açısından vazgeçilmez bir terimdir. İş sağlığı ve güvenliği bir hedef değil, sürekli iyileştirilmesi gereken bir süreçtir. Müşterilerimize sunduğumuz hizmetlerde kesintisiz takip, düzenli denetim ve güncel mevzuata anında uyum sağlama garantisi veriyoruz. İSG süreçlerinin bir belge olmaktan çıkıp, işletmenizin ayrılmaz bir parçası haline gelmesini hedefliyoruz. Güvenliği sürekli kılarak, işletmenizin karşılaşabileceği iş kazaları ve meslek hastalıklarını minimize eder, operasyonel verimliliğinizi koruruz.</p>
+</div>
+
+<div class="mv-box">
+<h2 class="section-title">VİZYONUMUZ</h2>
+<p><strong>Sağlık, Sorumluluk ve Sürekliliği Bütünleştiren Bir Gelecek</strong></p>
+<p>3S OSGB olarak vizyonumuz; <strong>sağlıklı</strong> bireylerin, <strong>sorumluluk</strong> bilinciyle yönetilen işletmelerin ve bu iki değerin kaynaşmasından doğan <strong>sürekliliğin</strong> standart haline geldiği bir gelecek inşa etmektir.</p>
+<p>Amacımız, iş sağlığı ve güvenliği hizmetlerini yalnızca yasal bir zorunluluk olarak gören anlayışın ötesine geçerek; çalışanların fiziksel ve ruhsal <strong>sağlığını</strong> merkeze alan, işverenlerin toplumsal ve hukuki <strong>sorumluluğunu</strong> en üst düzeyde hissettiği ve tüm bu süreçlerin <strong>sürekliliğini</strong> garanti altına alan bir ekosistem oluşturmaktır.</p>
+<p>Bu üç temel ilkenin birbirini beslediği güçlü bir sinerjiyle, iş kazalarının ve meslek hastalıklarının olmadığı, üretkenliğin ve çalışan mutluluğunun arttığı sürdürülebilir bir iş dünyasının öncüsü olmayı hedefliyoruz. Vizyonumuz, 3S felsefemizin ışığında, güvenliğin bir kültür haline geldiği yarınlara ulaşmaktır.</p>
+</div>
+
+</div>
+</section>
+
+<!-- HİZMETLER -->
+<section id="hizmetler">
+<h2 class="section-title">HİZMETLERİMİZ</h2>
+<div class="services-scroll">
+
+  <div class="service-card">
+    <div class="card-header">Mobil Sağlık</div>
+    <div class="card-content">
+      <p>Mobil Sağlık Hizmetleri, Meslek Hastalıklarının önlenmesi ve tespitinin yapılması amacıyla,
+        işyerlerinde çalışanların sağlık taramalarını yerinde ve zaman kaybı olmadan gerçekleştirilen bir hizmettir.</p>
+      <p>3S OSGB olarak, iş sağlığı ve güvenliği hizmetlerinde erişilebilirliği ve verimliliği artırmak amacıyla
+        Mobil Sağlık Hizmetlerimizi sizlerle buluşturuyoruz. Çalışanlarınızın sağlık kontrollerini, iş süreçlerinizi
+        aksatmadan ve zaman kaybını en aza indirerek gerçekleştirmek için güçlü çözüm ortaklarımızla iş birliği yapıyoruz.</p>
+      <p><strong>Bu kapsamda:</strong></p>
+      <ul>
+        <li>İşe giriş ve periyodik muayeneler</li>
+        <li>Laboratuvar tetkikleri (Kan, İdrar vb. tahliller)</li>
+        <li>Sağlık tetkikleri (Akciğer Grafisi, Odiometri, Görme Kuvvetleri, EKG, SFT vb.)</li>
+        <li>Aşılama hizmetleri</li>
+        <li>İşyeri hekimliği ve diğer sağlık profesyonelleri desteği</li>
+      </ul>
+      <p>Böylece siz, asıl işinize odaklanırken; çalışanlarınızın sağlığını koruma sorumluluğunu,
+        süreklilik esasına dayalı bir anlayışla birlikte yönetiyoruz.</p>
+    </div>
+  </div>
+
+  <div class="service-card">
+    <div class="card-header">OSGB Hizmetleri</div>
+    <div class="card-content">
+      <p>6331 Sayılı İş Sağlığı ve Güvenliği Kanunu kapsamında
+        işverenlerin yükümlülüklerini yerine getirmelerine destek sağlıyoruz.</p>
+      <ul>
+        <li>İşyeri Hekimi Hizmeti</li>
+        <li>İş Güvenliği Uzmanlığı</li>
+        <li>Diğer Sağlık Personeli</li>
+        <li>Risk Değerlendirmesi</li>
+        <li>Acil Durum Planlaması</li>
+        <li>Yıllık Çalışma Planı ve Raporlama</li>
+      </ul>
+      <p>İşletmenizin ihtiyaçlarına özel çözümler sunarak
+        mevzuata tam uyum sağlıyoruz.</p>
+    </div>
+  </div>
+
+  <div class="service-card">
+    <div class="card-header">Eğitim Hizmetleri</div>
+    <div class="card-content">
+      <p>Çalışanların bilinç düzeyini artırmak ve güvenli çalışma kültürü oluşturmak
+        amacıyla uygulamalı ve teorik eğitimler düzenliyoruz.</p>
+      <ul>
+        <li>Temel İş Sağlığı ve Güvenliği Eğitimi</li>
+        <li>Yüksekte Çalışma Eğitimi</li>
+        <li>Yangın Eğitimi ve Tatbikat</li>
+        <li>İlkyardım Eğitimi</li>
+        <li>Acil Durum ve Tahliye Eğitimi</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- İLETİŞİM -->
+<section id="iletisim">
+<h2 class="section-title">İLETİŞİM</h2>
+
+<div class="contact-wrapper">
+<div>
+<p><strong>Telefon:</strong> 0216 642 6331</p>
+<p><strong>E-posta:</strong> info@3sosgb.com</p>
+<p><strong>Adres:</strong><br>
+Mimar Sinan Mah. Çavuşbaşı Cad. Özge Sok.<br>
+Zin D İş Merkezi No:1 K:3 D:13<br>
+Çekmeköy / İstanbul
+</p>
+</div>
+
+<form id="contactForm" class="contact-form">
+<input type="hidden" name="_captcha" value="false">
+<input type="text" name="Ad Soyad" placeholder="Ad Soyad" required>
+<input type="email" name="Email" placeholder="E-posta" required>
+<input type="text" name="Konu" placeholder="Konu" required>
+<textarea name="Mesaj" rows="5" placeholder="Mesajınız..." required></textarea>
+<button type="submit">Mesaj Gönder</button>
+</form>
+</div>
+
+<div class="map-container">
+<iframe src="https://www.google.com/maps?q=3S+OSGB+Çekmeköy+İstanbul&output=embed" loading="lazy"></iframe>
+</div>
+
+</section>
+
+<div class="success-message" id="successMessage">
+Mesajınız başarıyla iletilmiştir.
+</div>
+
+<footer>
+<p>
+<a href="tel:02166426331">0216 642 6331</a><br>
+Mimar Sinan Mah. Çavuşbaşı Cad. Özge Sok.<br>
+Zin D İş Merkezi No:1 K:3 D:13<br>
+Çekmeköy / İstanbul
+</p>
+</footer>
+
 <script>
-const navLinks = document.getElementById("navLinks");
-const menuToggle = document.getElementById("menuToggle");
-const overlay = document.getElementById("overlay");
-
 function toggleMenu(){
-  navLinks.classList.toggle("active");
-  menuToggle.classList.toggle("active");
-  overlay.classList.toggle("active");
-}
-
-function closeMenu(){
-  navLinks.classList.remove("active");
-  menuToggle.classList.remove("active");
-  overlay.classList.remove("active");
-  document.querySelector(".dropdown").classList.remove("active");
-}
-
-function toggleDropdown(){
-  document.querySelector(".dropdown").classList.toggle("active");
+  document.getElementById("navLinks").classList.toggle("active");
 }
 
 window.addEventListener("scroll",function(){
@@ -267,6 +515,24 @@ window.addEventListener("scroll",function(){
   }else{
     navbar.classList.remove("scrolled");
   }
+});
+
+document.getElementById("contactForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  let formData = new FormData(this);
+  fetch("https://formsubmit.co/ajax/info@3sosgb.com", {
+    method: "POST",
+    body: formData
+  })
+  .then(response => response.json())
+  .then(data => {
+    document.getElementById("successMessage").style.display = "block";
+    document.getElementById("contactForm").reset();
+    setTimeout(() => {
+      document.getElementById("successMessage").style.display = "none";
+    }, 3000);
+  })
+  .catch(error => alert("Bir hata oluştu. Lütfen tekrar deneyin."));
 });
 </script>
 
