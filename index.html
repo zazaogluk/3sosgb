@@ -10,61 +10,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-/* HEADER */
-.main-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:20px 40px;
-    background:#ffffff;
-    position:relative;
-}
-
-/* LOGO */
-.logo{
-    font-size:40px;
-    font-weight:700;
-    color:#002850;
-}
-
-/* MENU BUTTON */
-.menu-toggle{
-    font-size:30px;
-    cursor:pointer;
-    color:#002850;
-}
-
-/* NAVIGATION */
-.main-nav{
-    position:absolute;
-    top:80px;
-    right:40px;
-    background:#002850;
-    border-radius:12px;
-    display:none;
-}
-
-.main-nav ul{
-    list-style:none;
-    margin:0;
-    padding:20px;
-}
-
-.main-nav ul li{
-    margin-bottom:15px;
-}
-
-.main-nav ul li:last-child{
-    margin-bottom:0;
-}
-
-.main-nav ul li a{
-    text-decoration:none;
-    color:white;
-    font-size:18px;
-}
-
-
 body{
   margin:0;
   font-family:'Inter',sans-serif;
@@ -401,22 +346,7 @@ footer a{
 </head>
 
 <body>
-<header class="main-header">
-    <div class="logo">e</div>
 
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-
-    <nav class="main-nav" id="mainNav">
-        <ul>
-            <li><a href="#">Anasayfa</a></li>
-            <li><a href="#">Kurumsal</a></li>
-            <li><a href="#">Hizmetlerimiz</a></li>
-            <li><a href="#">İletişim</a></li>
-        </ul>
-    </nav>
-</header>
-
-  
 <div class="navbar" id="navbar">
 <img class="small-logo" src="https://raw.githubusercontent.com/zazaogluk/3sosgb/main/Logo.png?v=8">
 <div class="menu-toggle" onclick="toggleMenu()">☰</div>
@@ -604,16 +534,6 @@ document.getElementById("contactForm").addEventListener("submit", function(e){
   })
   .catch(error => alert("Bir hata oluştu. Lütfen tekrar deneyin."));
 });
-</script>
-<script>
-function toggleMenu(){
-    var nav = document.getElementById("mainNav");
-    if(nav.style.display === "block"){
-        nav.style.display = "none";
-    } else {
-        nav.style.display = "block";
-    }
-}
 </script>
 
 </body>
