@@ -396,19 +396,22 @@ background:#002850;
 border-radius:10px;
 }
 /* CARD HEADER STRIP */
-.card-header{
-  flex-shrink:0;
-  background:#002850;
-  color:white;
-  padding:15px 20px;       /* Başlık iç boşluğu */
-  margin:0 0 10px 0;       /* Üst ve yan margin sıfır, alt biraz boşluk */
-  border-radius:18px 18px 0 0;
-  font-weight:600;
-  font-size:18px;          /* Daha okunaklı */
-  letter-spacing:0.5px;
-   /* Opsiyonel görsel iyileştirme */
-  text-align:center;        /* Başlığı ortalar */
-  text-transform:uppercase; /* Başlığı büyük harf yapar */
+.card-header {
+  flex-shrink: 0;
+  background: #002850;
+  color: white;
+  padding: 15px 20px;
+  margin: 0;                  /* Margin sıfırla, kutunun kenarına yapışsın */
+  border-radius: 18px 18px 0 0;
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+
+  text-align: center;
+  text-transform: uppercase;
+
+  width: 100%;               /* Kutunun yatay genişliğine eşit */
+  box-sizing: border-box;    /* Padding dahil tam genişlik */
 }
 
 
