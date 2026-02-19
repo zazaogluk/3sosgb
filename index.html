@@ -46,6 +46,7 @@ body{
   opacity:1;
 }
 
+/* NAV LINKS */
 .nav-links{
   display:flex;
   align-items:center;
@@ -66,14 +67,14 @@ body{
 .nav-links a{
   text-decoration:none;
   margin-left:30px;
-  color:transparent;
+  color:white; /* DÜZELTİLDİ */
   font-weight:500;
   transition:0.3s;
   display:block;
 }
 
-.navbar.scrolled .nav-links a{
-  color:white;
+.nav-links a:hover{
+  opacity:0.8;
 }
 
 /* DROPDOWN */
@@ -92,7 +93,7 @@ body{
 .dropdown-menu a{
   margin:0;
   padding:12px 20px;
-  color:white !important;
+  color:white;
 }
 
 .dropdown-menu a:hover{
@@ -103,11 +104,50 @@ body{
   display:flex;
 }
 
+/* MOBILE */
 .menu-toggle{
   display:none;
   font-size:28px;
   color:white;
   cursor:pointer;
+}
+
+@media(max-width:768px){
+
+  .navbar{padding:15px 20px;}
+
+  .nav-links{
+    position:absolute;
+    top:70px;
+    left:0;
+    width:100%;
+    background:#002850;
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.3s ease;
+  }
+
+  .nav-links.active{
+    max-height:800px;
+  }
+
+  .nav-links ul{
+    flex-direction:column;
+  }
+
+  .nav-links a{
+    margin:15px 0;
+  }
+
+  .dropdown-menu{
+    position:static;
+    display:flex;
+    background:#001f3d;
+  }
+
+  .menu-toggle{
+    display:block;
+  }
 }
 
 /* HERO */
@@ -148,46 +188,6 @@ header{
   margin-bottom:40px;
   color:white;
 }
-
-/* MOBILE */
-@media(max-width:768px){
-
-  .navbar{padding:15px 20px;}
-
-  .nav-links{
-    position:absolute;
-    top:70px;
-    left:0;
-    width:100%;
-    background:#002850;
-    max-height:0;
-    overflow:hidden;
-    transition:max-height 0.3s ease;
-  }
-
-  .nav-links.active{
-    max-height:800px;
-  }
-
-  .nav-links ul{
-    flex-direction:column;
-  }
-
-  .nav-links a{
-    margin:15px 0;
-    color:white !important;
-  }
-
-  .dropdown-menu{
-    position:static;
-    display:flex;
-    background:#001f3d;
-  }
-
-  .menu-toggle{
-    display:block;
-  }
-}
 </style>
 </head>
 
@@ -195,6 +195,7 @@ header{
 
 <div class="navbar" id="navbar">
 <img class="small-logo" src="https://raw.githubusercontent.com/zazaogluk/3sosgb/main/Logo.png?v=8">
+
 <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
 <div class="nav-links" id="navLinks">
