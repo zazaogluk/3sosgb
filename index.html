@@ -268,16 +268,20 @@ text-decoration:none;
 .navbar{padding:15px 20px;}
 
 .nav-links{
-display:none;
-flex-direction:column;
-position:absolute;
-top:70px;
-left:0;
-width:100%;
-background:#002850;
-padding:25px 0;
-text-align:center;
+  display:flex;               /* flex olarak bırak */
+  flex-direction:column;
+  position:absolute;
+  top:70px;
+  left:0;
+  width:100%;
+  background:#002850;
+  overflow:hidden;            /* taşmayı gizle */
+  max-height:0;               /* başlangıçta kapalı */
+  transition: max-height 0.3s ease; /* animasyon ekle */
+  text-align:center;
+  padding:0;                  /* kapalıyken padding yok */
 }
+
 
 .nav-links a{
 display:block;
@@ -285,8 +289,10 @@ margin:15px 0;
 }
 
 .nav-links.active{
-display:flex;
+  max-height:500px;   /* tüm linkler sığacak kadar yüksek */
+  padding:25px 0;     /* açılınca padding ekle */
 }
+
 
 .menu-toggle{
 display:block;
