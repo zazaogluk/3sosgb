@@ -335,27 +335,38 @@ gap:30px;
 }
 
 /* SERVICE CARD */
+/* SERVICE CARD */
 .service-card{
-background:white;
-border-radius:18px;
-box-shadow:0 15px 35px rgba(0,0,0,0.08);
-height:380px;                 /* Sabit yükseklik */
-display:flex;
-flex-direction:column;
-transition:0.3s ease;
-overflow:hidden;              /* Dış taşma kapalı */
+  background:white;
+  border-radius:18px;
+  box-shadow:0 15px 35px rgba(0,0,0,0.08);
+  height:380px;                 /* Sabit yükseklik */
+  display:flex;
+  flex-direction:column;
+  transition:0.3s ease;
+  overflow:hidden;              /* Dış taşma kapalı */
+  /* width, max-width ve margin satırları kaldırıldı */
 }
 
-/* HEADER - SABİT */
-.card-header{
-background:#002850;
-color:white;
-padding:18px 20px;
-font-weight:600;
-font-size:16px;
-letter-spacing:0.5px;
-flex-shrink:0;               /* Küçülmez */
+/* CARD HEADER STRIP */
+.card-header {
+  flex-shrink: 0;
+  background: #002850;
+  color: white;
+  padding: 15px 20px;
+  margin: 0;                  /* Margin sıfırla, kutunun kenarına yapışsın */
+  border-radius: 18px 18px 0 0;
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+
+  text-align: center;
+  text-transform: uppercase;
+
+  width: 100%;               /* Başlık kutunun genişliğini kaplar */
+  box-sizing: border-box;    /* Padding dahil tam genişlik */
 }
+
 
 /* CONTENT - SCROLL ALANI */
 .card-content{
