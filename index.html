@@ -16,6 +16,7 @@ body{
   background:#f4f6f8;
   color:#333;
   scroll-behavior:smooth;
+  overflow-x:hidden;
 }
 
 /* NAVBAR */
@@ -46,31 +47,91 @@ body{
   opacity:1;
 }
 
-/* NAV LINKS */
-.nav-links{
+/* HAMBURGER */
+.menu-toggle{
+  width:30px;
+  height:22px;
   display:flex;
-  align-items:center;
+  flex-direction:column;
+  justify-content:space-between;
+  cursor:pointer;
+  z-index:1100;
+}
+
+.menu-toggle span{
+  height:3px;
+  width:100%;
+  background:white;
+  border-radius:2px;
+  transition:0.4s ease;
+}
+
+/* X ANİMASYONU */
+.menu-toggle.active span:nth-child(1){
+  transform:rotate(45deg) translate(5px,5px);
+}
+
+.menu-toggle.active span:nth-child(2){
+  opacity:0;
+}
+
+.menu-toggle.active span:nth-child(3){
+  transform:rotate(-45deg) translate(6px,-6px);
+}
+
+/* OVERLAY */
+.overlay{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.5);
+  opacity:0;
+  visibility:hidden;
+  transition:0.4s ease;
+  z-index:900;
+}
+
+.overlay.active{
+  opacity:1;
+  visibility:visible;
+}
+
+/* NAV MENU (SLIDE) */
+.nav-links{
+  position:fixed;
+  top:0;
+  right:-320px;
+  height:100%;
+  width:280px;
+  background:#002850;
+  padding:100px 30px;
+  transition:0.4s ease;
+  z-index:1000;
+  overflow-y:auto;
+}
+
+.nav-links.active{
+  right:0;
 }
 
 .nav-links ul{
   list-style:none;
-  margin:0;
   padding:0;
-  display:flex;
-  align-items:center;
+  margin:0;
 }
 
 .nav-links li{
-  position:relative;
+  margin-bottom:20px;
 }
 
 .nav-links a{
   text-decoration:none;
-  margin-left:30px;
-  color:white; /* DÜZELTİLDİ */
+  color:white;
   font-weight:500;
-  transition:0.3s;
   display:block;
+  transition:0.3s;
 }
 
 .nav-links a:hover{
@@ -79,75 +140,20 @@ body{
 
 /* DROPDOWN */
 .dropdown-menu{
-  position:absolute;
-  top:40px;
-  left:0;
-  background:#002850;
-  display:none;
-  flex-direction:column;
-  min-width:220px;
-  border-radius:10px;
+  max-height:0;
   overflow:hidden;
+  transition:0.4s ease;
+  padding-left:15px;
+}
+
+.dropdown.active .dropdown-menu{
+  max-height:300px;
+  margin-top:10px;
 }
 
 .dropdown-menu a{
-  margin:0;
-  padding:12px 20px;
-  color:white;
-}
-
-.dropdown-menu a:hover{
-  background:#001f3d;
-}
-
-.dropdown:hover .dropdown-menu{
-  display:flex;
-}
-
-/* MOBILE */
-.menu-toggle{
-  display:none;
-  font-size:28px;
-  color:white;
-  cursor:pointer;
-}
-
-@media(max-width:768px){
-
-  .navbar{padding:15px 20px;}
-
-  .nav-links{
-    position:absolute;
-    top:70px;
-    left:0;
-    width:100%;
-    background:#002850;
-    max-height:0;
-    overflow:hidden;
-    transition:max-height 0.3s ease;
-  }
-
-  .nav-links.active{
-    max-height:800px;
-  }
-
-  .nav-links ul{
-    flex-direction:column;
-  }
-
-  .nav-links a{
-    margin:15px 0;
-  }
-
-  .dropdown-menu{
-    position:static;
-    display:flex;
-    background:#001f3d;
-  }
-
-  .menu-toggle{
-    display:block;
-  }
+  font-size:14px;
+  margin-bottom:10px;
 }
 
 /* HERO */
@@ -193,26 +199,32 @@ header{
 
 <body>
 
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
 <div class="navbar" id="navbar">
 <img class="small-logo" src="https://raw.githubusercontent.com/zazaogluk/3sosgb/main/Logo.png?v=8">
 
-<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+<div class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
 
 <div class="nav-links" id="navLinks">
 <ul>
-  <li><a href="#">Anasayfa</a></li>
-  <li><a href="#">Kurumsal</a></li>
+  <li><a href="#" onclick="closeMenu()">Anasayfa</a></li>
+  <li><a href="#hakkimizda" onclick="closeMenu()">Kurumsal</a></li>
 
   <li class="dropdown">
-    <a href="#">Hizmetlerimiz</a>
+    <a href="javascript:void(0)" onclick="toggleDropdown()">Hizmetlerimiz</a>
     <div class="dropdown-menu">
-      <a href="#">OSGB Hizmetleri</a>
-      <a href="#">Mobil Sağlık Hizmetleri</a>
-      <a href="#">Eğitim Hizmetleri</a>
+      <a href="#osgb" onclick="closeMenu()">OSGB Hizmetleri</a>
+      <a href="#mobil" onclick="closeMenu()">Mobil Sağlık Hizmetleri</a>
+      <a href="#egitim" onclick="closeMenu()">Eğitim Hizmetleri</a>
     </div>
   </li>
 
-  <li><a href="#">İletişim</a></li>
+  <li><a href="#iletisim" onclick="closeMenu()">İletişim</a></li>
 </ul>
 </div>
 </div>
@@ -227,8 +239,25 @@ header{
 </header>
 
 <script>
+const navLinks = document.getElementById("navLinks");
+const menuToggle = document.getElementById("menuToggle");
+const overlay = document.getElementById("overlay");
+
 function toggleMenu(){
-  document.getElementById("navLinks").classList.toggle("active");
+  navLinks.classList.toggle("active");
+  menuToggle.classList.toggle("active");
+  overlay.classList.toggle("active");
+}
+
+function closeMenu(){
+  navLinks.classList.remove("active");
+  menuToggle.classList.remove("active");
+  overlay.classList.remove("active");
+  document.querySelector(".dropdown").classList.remove("active");
+}
+
+function toggleDropdown(){
+  document.querySelector(".dropdown").classList.toggle("active");
 }
 
 window.addEventListener("scroll",function(){
