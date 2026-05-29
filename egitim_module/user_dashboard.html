@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eğitimlerim - 3S OSGB</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <style>
+        .category-card { border: 1px solid #ddd; border-radius: 12px; margin-bottom: 25px; padding: 15px; background: #f9f9fc; }
+        .category-title { font-size: 1.5rem; background: #1e4668; color: white; padding: 8px; border-radius: 8px; margin-bottom: 15px; }
+        .module-item { display: flex; justify-content: space-between; align-items: center; padding: 8px; border-bottom: 1px solid #eee; }
+        .progress-bar { width: 150px; background: #e0e0e0; border-radius: 10px; height: 8px; }
+        .progress-fill { background: #2c6e49; height: 8px; border-radius: 10px; width: 0%; }
+        .warning { color: #d9534f; font-weight: bold; margin-left: 10px; }
+        .btn-exam { background: #ff9800; color: white; border: none; padding: 6px 12px; border-radius: 20px; cursor: pointer; margin-top: 10px; }
+        .btn-exam:hover { background: #e68900; }
+        .module-buttons { display: flex; gap: 10px; align-items: center; }
+        .timer { font-size: 1.2rem; font-weight: bold; background: #1e4668; color: white; padding: 8px 15px; border-radius: 30px; display: inline-block; margin-bottom: 15px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="logo-area"><img src="3S OSGB.jpg" alt="Logo" class="logo"><h1>3S OSGB Uzaktan Eğitim</h1></div>
+    <p>Hoş geldiniz, <strong id="userName"></strong> (<span id="userCompany"></span>) - Tehlike Sınıfı: <span id="dangerClassText"></span></p>
+    <div class="timer">Oturum Süresi: <span id="sessionTimer">00:00:00</span></div>
+    <div id="dashboardContainer"></div>
+    <br><button id="logoutBtn">Çıkış Yap</button>
+</div>
+<script>
+    if (!checkSessionAndRedirect()) {
+        // yönlendirildi
+    } else {
+        startIdleMonitoring();
+        
+        // Kronometre değişkenleri
+        let timerInterval;
+        let elapsedSeconds = 0;
+        const sessionStartTime = localStorage.getItem('sessionStartTime');
+        if (sessionStartTime) {
+            const start = new Date(sessionStartTime).getTime();
+            const now = Date.now();
+            elapsedSeconds = Math.floor((now - start) / 1000);
+            // Daha önce kaydedilmiş totalElapsedSeconds varsa ekle (örneğin token yenileme durumunda)
+            const storedElapsed = localStorage.getItem('currentElapsedSeconds');
+            if (storedElapsed) {
+                elapsedSeconds += parseInt(storedElapsed);
+            }
+        }
+        
+        function updateTimerDisplay() {
+            const hours = Math.floor(elapsedSeconds / 3600);
+            const minutes = Math.floor((elapsedSeconds % 3600) / 60);
+            const seconds = elapsedSeconds % 60;
+            document.getElementById('sessionTimer').innerText = 
+                `${hours.toString().padStart(2,'0')}:${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
+        }
+        
+        function startTimer() {
+            if (timerInterval) clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                elapsedSeconds++;
+                updateTimerDisplay();
+                // Her saniye elapsedSeconds'i localStorage'a yaz (çıkışta kullanmak için)
+                localStorage.setItem('currentElapsedSeconds', elapsedSeconds);
+            }, 1000);
+        }
+        
+        function stopTimerAndGetElapsed() {
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+            }
+            return elapsedSeconds;
+        }
+        
+        // Oturum kapatma işlemini yapan fonksiyon (çıkış zamanını hesapla ve loga yaz)
+        function performLogout() {
+            const totalSeconds = stopTimerAndGetElapsed();
+            let logs = JSON.parse(localStorage.getItem('trainingLogs') || '[]');
+            const activeSession = localStorage.getItem('activeSessionToken');
+            const idx = logs.findIndex(l => l.sessionId === activeSession);
+            if (idx !== -1 && !logs[idx].logoutTime) {
+                const loginTime = new Date(logs[idx].loginTime);
+                const logoutTime = new Date(loginTime.getTime() + totalSeconds * 1000);
+                logs[idx].logoutTime = logoutTime.toISOString();
+                logs[idx].totalElapsedSeconds = totalSeconds;
+                localStorage.setItem('trainingLogs', JSON.stringify(logs));
+            }
+            localStorage.removeItem('activeSessionToken');
+            localStorage.removeItem('activeUserId');
+            localStorage.removeItem('activeUserRole');
+            localStorage.removeItem('sessionStartTime');
+            localStorage.removeItem('currentElapsedSeconds');
+            window.location.href = 'index.html';
+        }
+        
+        // Sayfa kapatılırken
+        window.addEventListener('beforeunload', () => {
+            stopIdleMonitoring();
+            const totalSeconds = stopTimerAndGetElapsed();
+            let logs = JSON.parse(localStorage.getItem('trainingLogs') || '[]');
+            const activeSession = localStorage.getItem('activeSessionToken');
+            const idx = logs.findIndex(l => l.sessionId === activeSession);
+            if (idx !== -1 && !logs[idx].logoutTime) {
+                const loginTime = new Date(logs[idx].loginTime);
+                const logoutTime = new Date(loginTime.getTime() + totalSeconds * 1000);
+                logs[idx].logoutTime = logoutTime.toISOString();
+                logs[idx].totalElapsedSeconds = totalSeconds;
+                localStorage.setItem('trainingLogs', JSON.stringify(logs));
+            }
+        });
+        
+        // İdle timeout için logout fonksiyonunu override et (script.js'deki logoutDueToInactivity kullanılacak)
+        // Ama onun da aynı mantıkla çalışması için logoutDueToInactivity fonksiyonunu yeniden tanımlayalım
+        window.logoutDueToInactivity = function() {
+            const totalSeconds = stopTimerAndGetElapsed();
+            let logs = JSON.parse(localStorage.getItem('trainingLogs') || '[]');
+            const activeSession = localStorage.getItem('activeSessionToken');
+            const idx = logs.findIndex(l => l.sessionId === activeSession);
+            if (idx !== -1 && !logs[idx].logoutTime) {
+                const loginTime = new Date(logs[idx].loginTime);
+                const logoutTime = new Date(loginTime.getTime() + totalSeconds * 1000);
+                logs[idx].logoutTime = logoutTime.toISOString();
+                logs[idx].totalElapsedSeconds = totalSeconds;
+                localStorage.setItem('trainingLogs', JSON.stringify(logs));
+            }
+            localStorage.removeItem('activeSessionToken');
+            localStorage.removeItem('activeUserId');
+            localStorage.removeItem('activeUserRole');
+            localStorage.removeItem('sessionStartTime');
+            localStorage.removeItem('currentElapsedSeconds');
+            alert('60 dakika boyunca herhangi bir etkinlik olmadığı için oturumunuz kapatılmıştır.');
+            window.location.href = 'index.html';
+        };
+        
+        startTimer();
+        updateTimerDisplay();
+        
+        const userId = parseInt(localStorage.getItem('activeUserId'));
+        const dangerClass = localStorage.getItem('activeDangerClass');
+        document.getElementById('userName').innerText = localStorage.getItem('activeUsername');
+        document.getElementById('userCompany').innerText = localStorage.getItem('activeCompany') || '';
+        const dangerText = dangerClass === 'az_tehlikeli' ? 'Az Tehlikeli' : (dangerClass === 'tehlikeli' ? 'Tehlikeli' : (dangerClass === 'cok_tehlikeli' ? 'Çok Tehlikeli' : 'Belirtilmemiş'));
+        document.getElementById('dangerClassText').innerText = dangerText;
+
+        const userModules = getModulesForDangerClass(dangerClass);
+        const categories = [...new Set(userModules.map(m => m.category))];
+
+        function renderDashboard() {
+            const progress = getUserProgress(userId);
+            const container = document.getElementById('dashboardContainer');
+            container.innerHTML = '';
+            for (let cat of categories) {
+                const catModules = userModules.filter(m => m.category === cat);
+                const allWatched = catModules.every(m => progress[m.id] && progress[m.id].videoWatchedPercent === 100);
+                const examStatus = getCategoryExamStatus(userId, cat);
+                const examPassed = examStatus.passed;
+                const card = document.createElement('div');
+                card.className = 'category-card';
+                card.innerHTML = `<div class="category-title">📁 ${cat}</div>`;
+                catModules.forEach(mod => {
+                    const modProgress = progress[mod.id] || { videoWatchedPercent: 0 };
+                    const percent = modProgress.videoWatchedPercent;
+                    const btnText = percent === 100 ? 'Tekrar İzle' : 'İzlemeye Başla';
+                    const modDiv = document.createElement('div');
+                    modDiv.className = 'module-item';
+                    modDiv.innerHTML = `
+                        <div style="flex:2;"><strong>${mod.code}</strong> ${mod.title}</div>
+                        <div style="flex:1;"><div class="progress-bar"><div class="progress-fill" style="width:${percent}%;"></div></div>${percent}%</div>
+                        <div class="module-buttons"><button class="btn-start" data-id="${mod.id}">${btnText}</button></div>
+                    `;
+                    card.appendChild(modDiv);
+                });
+                if (allWatched && !examPassed) {
+                    const examDiv = document.createElement('div');
+                    examDiv.style.marginTop = '15px';
+                    examDiv.innerHTML = `<button class="btn-exam" data-cat="${cat}">📝 ${cat} Sınavını Tamamla</button> <span class="warning">⚠️ Tüm videolar izlendi. Sınavı tamamlamalısınız!</span>`;
+                    card.appendChild(examDiv);
+                } else if (examPassed) {
+                    const info = document.createElement('div');
+                    info.style.marginTop = '10px';
+                    info.innerHTML = `<span style="color:green;">✅ Bu kategori başarıyla tamamlandı (Sınav puanı: ${examStatus.score})</span>`;
+                    card.appendChild(info);
+                } else if (!allWatched) {
+                    const info = document.createElement('div');
+                    info.style.marginTop = '10px';
+                    info.innerHTML = `<span>📌 Bu kategorideki tüm videoları izledikten sonra sınava erişebilirsiniz.</span>`;
+                    card.appendChild(info);
+                }
+                container.appendChild(card);
+            }
+            document.querySelectorAll('.btn-start').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const modId = btn.getAttribute('data-id');
+                    window.location.href = `module.html?id=${modId}`;
+                });
+            });
+            document.querySelectorAll('.btn-exam').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const category = btn.getAttribute('data-cat');
+                    window.location.href = `category_exam.html?cat=${encodeURIComponent(category)}`;
+                });
+            });
+        }
+        renderDashboard();
+        
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            performLogout();
+        });
+    }
+</script>
+</body>
+</html>
