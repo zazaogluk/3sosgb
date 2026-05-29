@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>3S OSGB - Uzaktan Eğitim Giriş</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container login-container">
+    <div class="logo-area">
+        <img src="3S OSGB.jpg" alt="3S OSGB" class="logo">
+        <h1>3S OSGB Uzaktan Eğitim</h1>
+    </div>
+    <h2>İSG Uzaktan Eğitim Sistemi</h2>
+    <form id="loginForm">
+        <input type="text" id="loginUsername" placeholder="Kullanıcı Adı" required>
+        <input type="password" id="loginPassword" placeholder="Şifre" required>
+        <button type="submit">Giriş Yap</button>
+        <div id="loginError" class="error"></div>
+    </form>
+</div>
+<script src="script.js"></script>
+<script>
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const username = document.getElementById('loginUsername').value.trim();
+        const password = document.getElementById('loginPassword').value.trim();
+
+        const success = await loginUser(username, password);
+        if (!success) {
+            document.getElementById('loginError').innerText = 'Hatalı kullanıcı adı veya şifre.';
+            return;
+        }
+        const user = JSON.parse(localStorage.getItem('activeUser'));
+        const sessionToken = Date.now() + '_' + Math.random().toString(36).substring(2);
+        localStorage.setItem('activeSessionToken', sessionToken);
+        localStorage.setItem('activeUserId', user.id);
+        localStorage.setItem('activeUsername', user.username);
+        localStorage.setItem('activeCompany', user.company || '');
+        localStorage.setItem('activeDangerClass', user.dangerClass || '');
+        localStorage.setItem('activeUserRole', user.role);
+
+        await addLog({
+            userId: user.id,
+            username: user.username,
+            company: user.company || '',
+            dangerClass: user.dangerClass || '',
+            sessionId: sessionToken,
+            loginTime: new Date().toISOString(),
+            logoutTime: null
+        });
+
+        if (user.role === 'admin') {
+            window.location.href = 'admin.html';
+        } else {
+            window.location.href = 'user_dashboard.html';
+        }
+    });
+</script>
+</body>
+</html>
